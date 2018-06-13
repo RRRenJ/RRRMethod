@@ -7,10 +7,9 @@
 //
 
 #import "ViewController.h"
-#import "MBProgressHUD+RRR.h"
+
 #import "AVCompress.h"
-#import "NetworkingLoadingView.h"
-#import "UITableView+FooterView.h"
+#import "RRRMethod.h"
 
 #import "RRRButton.h"
 @interface ViewController ()<AVCompressDelegate,UITableViewDataSource>

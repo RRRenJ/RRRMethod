@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/RRRenJ/RRRMethod.git", :tag => s.version }
 
-  s.public_header_files = "RRRMethod/RRRMethod.h"
+  s.public_header_files = "RRRMethod/**/*.h"
 
   s.source_files  = "RRRMethod/*.h"
 

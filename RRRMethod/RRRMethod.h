@@ -14,6 +14,6 @@
 #import "RRRButton.h"
 #import "NetworkingLoadingView.h"
 #import "MBProgressHUD+RRR.h"
-#import "UITableView+FooterView.h";
+#import "UITableView+FooterView.h"
 
 #endif /* RRRMethod_h */

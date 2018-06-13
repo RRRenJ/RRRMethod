@@ -90,10 +90,5 @@ typedef NS_ENUM(NSInteger, AVCompressQuality){
 
 @property (nonatomic, assign) AVCompressStatus status;
 
-//@property (nonatomic, assign) AVUploadStatus uploadStatus;
-
-- (NSString *)getStatus;
-
-- (NSString *)getUploadStatus;
 
 @end
