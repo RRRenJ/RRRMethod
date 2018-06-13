@@ -6,7 +6,7 @@
 //  Copyright © 2018年 任敬. All rights reserved.
 //
 
-#import "MBProgressHUD.h"
+#import <MBProgressHUD.h>
 
 @interface MBProgressHUD (RRR)
 
