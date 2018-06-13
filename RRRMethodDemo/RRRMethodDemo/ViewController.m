@@ -9,9 +9,11 @@
 #import "ViewController.h"
 #import "MBProgressHUD+RRR.h"
 #import "AVCompress.h"
+#import "NetworkingLoadingView.h"
+#import "UITableView+FooterView.h"
 
 #import "RRRButton.h"
-@interface ViewController ()<AVCompressDelegate>
+@interface ViewController ()<AVCompressDelegate,UITableViewDataSource>
 
 @property (nonatomic, strong) NSTimer * timer;
 
@@ -33,15 +35,33 @@
     // Do any additional setup after loading the view, typically from a nib.
 //    NSLog(@"%@",[UIApplication sharedApplication].keyWindow);
     
-    RRRButton * bt = [RRRButton createBtWithFrame:CGRectMake(100, 100, 200, 100) type:UIButtonTypeCustom title:nil titleColor:nil btColor:[UIColor blueColor] andTarget:self action:@selector(xxx) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:bt];
-    
-    RRRButton * bt1 = [RRRButton createBtWithFrame:CGRectMake(100, 300, 200, 100) type:UIButtonTypeCustom title:nil titleColor:nil btColor:[UIColor blueColor] andTarget:self action:@selector(xxxx) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:bt1];
-    
-    
-    NSLog(@"%@",RRRDocumentPath);
+//    RRRButton * bt = [RRRButton createBtWithFrame:CGRectMake(100, 100, 200, 100) type:UIButtonTypeCustom title:nil titleColor:nil btColor:[UIColor blueColor] andTarget:self action:@selector(xxx) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:bt];
+//
+//    RRRButton * bt1 = [RRRButton createBtWithFrame:CGRectMake(100, 300, 200, 100) type:UIButtonTypeCustom title:nil titleColor:nil btColor:[UIColor blueColor] andTarget:self action:@selector(xxxx) forControlEvents:UIControlEventTouchUpInside];
+//    [self.view addSubview:bt1];
+//
+//
+//    NSLog(@"%@",RRRDocumentPath);
+    self.view.backgroundColor = BACKGROUND_COLOR;
+    UITableView * tableView = [[UITableView alloc]initWithFrame:CGRectMake(0, 0, SCR_WIDTH, SCR_HEIGHT)];
+    [self.view addSubview:tableView];
+
+    tableView.dataSource = self;
+    NetworkingLoadingView * footerView = [[NetworkingLoadingView alloc]init];
+    footerView.backgroundColor = WhiteColor;
+    footerView.loadingImgView.frame = CGRectMake(0, 0, 200, 100);
+    [tableView footerViewWithCustomView:footerView];
+    footerView.clickBlock = ^{
+        NSLog(@"11");
+    };
 }
+
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
+    return 0;
+}
+
 
 - (void)xxx{
 //    [MBProgressHUD showMessage:@"成功而王菲王菲王菲王菲王菲王菲无法"];

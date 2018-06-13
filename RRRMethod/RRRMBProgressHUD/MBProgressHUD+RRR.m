@@ -29,7 +29,7 @@
     hud.margin = 15;
     if (icon) {
         // 设置图片
-        hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@", icon]]];
+        hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
         hud.minSize = CGSizeMake(160, 90);
     }
     if (!([UIApplication sharedApplication].keyWindow)) {

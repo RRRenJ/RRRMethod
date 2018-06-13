@@ -23,6 +23,9 @@
 		B75749EE20CF9C3400757A90 /* EqualSpaceFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749EB20CF9C3400757A90 /* EqualSpaceFlowLayout.m */; };
 		B75749F220CFA03700757A90 /* AVCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749F120CFA03700757A90 /* AVCompress.m */; };
 		B75749F520D0C71800757A90 /* AVMutableVideoComposition+FixVideoDirection.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749F420D0C71800757A90 /* AVMutableVideoComposition+FixVideoDirection.m */; };
+		B75749F920D1483700757A90 /* NetworkingLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749F820D1483700757A90 /* NetworkingLoadingView.m */; };
+		B75749FB20D1505900757A90 /* NetworkingLoadingView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B75749FA20D1505900757A90 /* NetworkingLoadingView.bundle */; };
+		B75749FE20D152B500757A90 /* UITableView+FooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749FD20D152B500757A90 /* UITableView+FooterView.m */; };
 		EF9C50CD39101363B3A6F843 /* libPods-RRRMethodDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5585BD9E87922DB0805E6FA5 /* libPods-RRRMethodDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,12 @@
 		B75749F120CFA03700757A90 /* AVCompress.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AVCompress.m; sourceTree = "<group>"; };
 		B75749F320D0C71800757A90 /* AVMutableVideoComposition+FixVideoDirection.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "AVMutableVideoComposition+FixVideoDirection.h"; sourceTree = "<group>"; };
 		B75749F420D0C71800757A90 /* AVMutableVideoComposition+FixVideoDirection.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "AVMutableVideoComposition+FixVideoDirection.m"; sourceTree = "<group>"; };
+		B75749F720D1483700757A90 /* NetworkingLoadingView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkingLoadingView.h; sourceTree = "<group>"; };
+		B75749F820D1483700757A90 /* NetworkingLoadingView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkingLoadingView.m; sourceTree = "<group>"; };
+		B75749FA20D1505900757A90 /* NetworkingLoadingView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = NetworkingLoadingView.bundle; sourceTree = "<group>"; };
+		B75749FC20D152B500757A90 /* UITableView+FooterView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UITableView+FooterView.h"; sourceTree = "<group>"; };
+		B75749FD20D152B500757A90 /* UITableView+FooterView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+FooterView.m"; sourceTree = "<group>"; };
+		B75749FF20D15B3600757A90 /* RRRMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRRMethod.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,9 +132,13 @@
 			isa = PBXGroup;
 			children = (
 				B715A45020CEAC1E003018EF /* RRRMBProgressHUD */,
-				B715A44C20CEA216003018EF /* Tools */,
+				B75749EF20CFA00500757A90 /* AVCompress */,
+				B75749EA20CF9C3400757A90 /* CollcetionFlowLayout */,
+				B75749E720CF9C3400757A90 /* CountDownMethod */,
+				B715A44C20CEA216003018EF /* FooterView */,
 				B715A43F20CE9CF1003018EF /* FactoryView */,
 				B715A45420CEAF37003018EF /* RRRMethodConfige.h */,
+				B75749FF20D15B3600757A90 /* RRRMethod.h */,
 			);
 			name = RRRMethod;
 			path = ../../RRRMethod;
@@ -146,14 +159,16 @@
 			path = FactoryView;
 			sourceTree = "<group>";
 		};
-		B715A44C20CEA216003018EF /* Tools */ = {
+		B715A44C20CEA216003018EF /* FooterView */ = {
 			isa = PBXGroup;
 			children = (
-				B75749EF20CFA00500757A90 /* AVCompress */,
-				B75749EA20CF9C3400757A90 /* CollcetionFlowLayout */,
-				B75749E720CF9C3400757A90 /* CountDownMethod */,
+				B75749FA20D1505900757A90 /* NetworkingLoadingView.bundle */,
+				B75749F720D1483700757A90 /* NetworkingLoadingView.h */,
+				B75749F820D1483700757A90 /* NetworkingLoadingView.m */,
+				B75749FC20D152B500757A90 /* UITableView+FooterView.h */,
+				B75749FD20D152B500757A90 /* UITableView+FooterView.m */,
 			);
-			path = Tools;
+			path = FooterView;
 			sourceTree = "<group>";
 		};
 		B715A45020CEAC1E003018EF /* RRRMBProgressHUD */ = {
@@ -268,6 +283,7 @@
 				B715A45B20CEC117003018EF /* RRRMBProgressHUD.bundle in Resources */,
 				B715A43220CE9CBB003018EF /* Assets.xcassets in Resources */,
 				B715A43020CE9CB9003018EF /* Main.storyboard in Resources */,
+				B75749FB20D1505900757A90 /* NetworkingLoadingView.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -332,6 +348,8 @@
 				B715A42D20CE9CB9003018EF /* ViewController.m in Sources */,
 				B715A45320CEACA3003018EF /* MBProgressHUD+RRR.m in Sources */,
 				B715A43820CE9CBB003018EF /* main.m in Sources */,
+				B75749FE20D152B500757A90 /* UITableView+FooterView.m in Sources */,
+				B75749F920D1483700757A90 /* NetworkingLoadingView.m in Sources */,
 				B75749EE20CF9C3400757A90 /* EqualSpaceFlowLayout.m in Sources */,
 				B75749F220CFA03700757A90 /* AVCompress.m in Sources */,
 				B715A42A20CE9CB9003018EF /* AppDelegate.m in Sources */,

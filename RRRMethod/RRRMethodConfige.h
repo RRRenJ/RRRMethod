@@ -43,8 +43,10 @@
 /*********** 是否是刘海屏 ************/
 #define IS_BANG StatusBarHeight > 20
 
-#define BACKGROUND_COLOR [UIColor colorWithHexCode:@"f3f3f3"]
-#define GRAY_TEXT_COLOR [UIColor colorWithHexCode:@"999999"]
+#define BACKGROUND_COLOR [UIColor colorWithRed:243.f/255.f green:243.f/255.f blue:243.f/255.f alpha:1]
+#define GRAY_TEXT_COLOR [UIColor colorWithRed:153.f/255.f green:153.f/255.f blue:153.f/255.f alpha:1]
+
+
 #define WhiteColor [UIColor whiteColor]
 #define BlackColor [UIColor blackColor]
 
