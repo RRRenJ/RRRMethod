@@ -40,9 +40,6 @@ Pod::Spec.new do |s|
 
   ss.source_files = 'RRRMethod/FooterView/*'
   ss.dependency 'RRRMethod/FactoryView'
-  ss.resource_bundles = {
-     'FooterViewBundle' => ['RRMethod/FooterView/    NetworkingLoadingView.bundle'],
-  }
 
   end
 
@@ -70,9 +67,7 @@ Pod::Spec.new do |s|
 
   ss.source_files = 'RRRMethod/RRRMBProgressHUD/*'
   ss.dependency 'MBProgressHUD'
-  ss.resource_bundles = {
-     'RRRMBProgressHUDBundle' => ['RRMethod/RRRMBProgressHUD/RRRMBProgressHUD.bundle'],
-  }
+
   end
 
 end
