@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.source       = { :git => "https://github.com/RRRenJ/RRRMethod.git", :tag => s.version }
 
-  s.public_header_files = "RRRMethod/**/*.h"
+  s.public_header_files = "RRRMethod/RRRMethod.h"
 
   s.source_files  = "RRRMethod/*.h"
 
@@ -38,7 +38,9 @@ Pod::Spec.new do |s|
 
   s.subspec 'FooterView' do |ss|
 
-  ss.source_files = 'RRRMethod/FooterView/*.{h,m}'
+  ss.source_files = 'RRRMethod/FooterView/*'
+  ss.dependency 'RRRMethod/FactoryView'
+  ss.dependency 'RRRMethod'
   ss.resource_bundles = {
      'FooterViewBundle' => ['RRMethod/FooterView/    NetworkingLoadingView.bundle'],
   }
@@ -48,6 +50,7 @@ Pod::Spec.new do |s|
   s.subspec 'CountDownMethod' do |ss|
 
   ss.source_files = 'RRRMethod/CountDownMethod/*.{h,m}'
+
 
   end
 
@@ -61,12 +64,14 @@ Pod::Spec.new do |s|
 
   ss.source_files = 'RRRMethod/AVCompress/*.{h,m}'
 
+
   end
 
   s.subspec 'RRRMBProgressHUD' do |ss|
 
-  ss.source_files = 'RRRMethod/RRRMBProgressHUD/*.{h,m}'
+  ss.source_files = 'RRRMethod/RRRMBProgressHUD/*'
   ss.dependency 'MBProgressHUD'
+  ss.dependency 'RRRMethod'
   ss.resource_bundles = {
      'RRRMBProgressHUDBundle' => ['RRMethod/RRRMBProgressHUD/RRRMBProgressHUD.bundle'],
   }

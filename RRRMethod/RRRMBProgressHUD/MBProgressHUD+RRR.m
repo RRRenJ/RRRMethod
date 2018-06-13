@@ -7,6 +7,7 @@
 //
 
 #import "MBProgressHUD+RRR.h"
+#import "RRRMethodConfige.h"
 
 @implementation MBProgressHUD (RRR)
 /**

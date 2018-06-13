@@ -7,6 +7,7 @@
 //
 
 #import "NetworkingLoadingView.h"
+#import "RRRMethodConfige.h"
 
 @interface NetworkingLoadingView()
 
