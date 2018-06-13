@@ -66,7 +66,7 @@ Pod::Spec.new do |s|
   s.subspec 'RRRMBProgressHUD' do |ss|
 
   ss.source_files = 'RRRMethod/RRRMBProgressHUD/*.{h,m}'
-  ss.dependency = 'MBProgressHUD'
+  ss.dependency 'MBProgressHUD'
   ss.resource_bundles = {
      'RRRMBProgressHUDBundle' => ['RRMethod/RRRMBProgressHUD/RRRMBProgressHUD.bundle'],
   }
