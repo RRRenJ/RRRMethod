@@ -178,8 +178,8 @@
 		B75749EA20CF9C3400757A90 /* CollcetionFlowLayout */ = {
 			isa = PBXGroup;
 			children = (
-				B75749EB20CF9C3400757A90 /* EqualSpaceFlowLayout.m */,
 				B75749EC20CF9C3400757A90 /* EqualSpaceFlowLayout.h */,
+				B75749EB20CF9C3400757A90 /* EqualSpaceFlowLayout.m */,
 			);
 			path = CollcetionFlowLayout;
 			sourceTree = "<group>";
