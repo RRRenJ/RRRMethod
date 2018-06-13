@@ -21,13 +21,21 @@ Pod::Spec.new do |s|
 
   s.public_header_files = "RRRMethod/RRRMethod.h"
 
-  s.source_files  = "RRRMethod/*.h"
+  s.source_files  = "RRRMethod/RRRMethod.h"
 
   s.requires_arc = true
 
   s.frameworks   = 'UIKit', 'Foundation','Photos'
 
   s.platform     = :ios, "8.0"
+
+
+
+  s.subspec 'RRRMethodConfige' do |ss|
+
+  ss.source_files = 'RRRMethod/RRRMethodConfige/RRRMethodConfige.h'
+
+  end
 
 
   s.subspec 'FactoryView' do |ss|
@@ -40,7 +48,7 @@ Pod::Spec.new do |s|
 
   ss.source_files = 'RRRMethod/FooterView/*'
   ss.dependency 'RRRMethod/FactoryView'
-
+  ss.dependency 'RRRMethod/RRRMethodConfige'
   end
 
   s.subspec 'CountDownMethod' do |ss|
@@ -67,6 +75,7 @@ Pod::Spec.new do |s|
 
   ss.source_files = 'RRRMethod/RRRMBProgressHUD/*'
   ss.dependency 'MBProgressHUD'
+  ss.dependency 'RRRMethod/RRRMethodConfige'
 
   end
 

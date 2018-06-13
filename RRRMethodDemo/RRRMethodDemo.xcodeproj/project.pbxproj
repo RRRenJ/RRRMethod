@@ -131,13 +131,13 @@
 		B715A43E20CE9CF1003018EF /* RRRMethod */ = {
 			isa = PBXGroup;
 			children = (
+				B7574A0020D16FAC00757A90 /* RRRMethodConfige */,
 				B715A45020CEAC1E003018EF /* RRRMBProgressHUD */,
 				B75749EF20CFA00500757A90 /* AVCompress */,
 				B75749EA20CF9C3400757A90 /* CollcetionFlowLayout */,
 				B75749E720CF9C3400757A90 /* CountDownMethod */,
 				B715A44C20CEA216003018EF /* FooterView */,
 				B715A43F20CE9CF1003018EF /* FactoryView */,
-				B715A45420CEAF37003018EF /* RRRMethodConfige.h */,
 				B75749FF20D15B3600757A90 /* RRRMethod.h */,
 			);
 			name = RRRMethod;
@@ -208,6 +208,14 @@
 				B75749F420D0C71800757A90 /* AVMutableVideoComposition+FixVideoDirection.m */,
 			);
 			path = AVCompress;
+			sourceTree = "<group>";
+		};
+		B7574A0020D16FAC00757A90 /* RRRMethodConfige */ = {
+			isa = PBXGroup;
+			children = (
+				B715A45420CEAF37003018EF /* RRRMethodConfige.h */,
+			);
+			path = RRRMethodConfige;
 			sourceTree = "<group>";
 		};
 		E3B84DA9B29269D01A305454 /* Pods */ = {
