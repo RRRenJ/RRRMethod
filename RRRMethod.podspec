@@ -21,7 +21,7 @@ Pod::Spec.new do |s|
 
   s.public_header_files = "RRRMethod/RRRMethod.h"
 
-  s.source_files  = "RRRMethod/RRRMethod{Confige,}.h"
+  s.source_files  = "RRRMethod/*.h"
 
   s.requires_arc = true
 
