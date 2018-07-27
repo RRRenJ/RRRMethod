@@ -11,7 +11,7 @@
 
 @interface RRRCountDownMethod : NSObject
 
-- (void)initWithBt:(UIButton *)button startTitle:(NSString *)startTitle  waitTitle:(NSString *)waitTitle endTitle:(NSString *)endTitle totalTime:(NSInteger )totalTime;
+- (instancetype)initWithBt:(UIButton *)button startTitle:(NSString *)startTitle  waitTitle:(NSString *)waitTitle endTitle:(NSString *)endTitle totalTime:(NSInteger )totalTime;
 //点击按键后调用
 - (void)send;
 //请求成功调用

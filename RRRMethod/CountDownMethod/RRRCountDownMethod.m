@@ -29,13 +29,17 @@
 
 @implementation RRRCountDownMethod
 
-- (void)initWithBt:(UIButton *)button startTitle:(NSString *)startTitle waitTitle:(NSString *)waitTitle endTitle:(NSString *)endTitle totalTime:(NSInteger)totalTime{
-    self.startTitle = startTitle;
-    self.waitTitle = waitTitle;
-    self.endTitle = endTitle;
-    self.totalSeconds = totalTime;
-    self.button = button;
-    [self.button setTitle:self.startTitle forState:UIControlStateNormal];
+- (instancetype)initWithBt:(UIButton *)button startTitle:(NSString *)startTitle waitTitle:(NSString *)waitTitle endTitle:(NSString *)endTitle totalTime:(NSInteger)totalTime{
+    self = [super init];
+    if (self) {
+        self.startTitle = startTitle;
+        self.waitTitle = waitTitle;
+        self.endTitle = endTitle;
+        self.totalSeconds = totalTime;
+        self.button = button;
+        [self.button setTitle:self.startTitle forState:UIControlStateNormal];
+    }
+    return self;
 
 }
 

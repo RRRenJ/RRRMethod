@@ -184,8 +184,8 @@
 		B75749E720CF9C3400757A90 /* CountDownMethod */ = {
 			isa = PBXGroup;
 			children = (
-				B75749E820CF9C3400757A90 /* RRRCountDownMethod.m */,
 				B75749E920CF9C3400757A90 /* RRRCountDownMethod.h */,
+				B75749E820CF9C3400757A90 /* RRRCountDownMethod.m */,
 			);
 			path = CountDownMethod;
 			sourceTree = "<group>";
