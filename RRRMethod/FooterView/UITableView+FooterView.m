@@ -13,7 +13,7 @@
 @implementation UITableView (FooterView)
 
 - (void)footerViewWithEmptyView{
-    if(iPhoneX){
+    if(IS_BANG){
         UIView * view = [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCR_WIDTH, BottomHeight)];
         view.backgroundColor = BACKGROUND_COLOR;
         self.tableFooterView = view;
