@@ -74,7 +74,6 @@ Pod::Spec.new do |s|
   s.subspec 'RRRMBProgressHUD' do |ss|
 
   ss.source_files = 'RRRMethod/RRRMBProgressHUD/*'
-  ss.dependency 'RRRMethod/RRRMethodConfige'
   ss.dependency 'MBProgressHUD'
 
   end
