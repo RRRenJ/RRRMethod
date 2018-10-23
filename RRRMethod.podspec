@@ -31,6 +31,7 @@ Pod::Spec.new do |s|
 
   s.user_target_xcconfig = {'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'}
 
+  s.xcconfig     = {'OTHER_LDFLAGS' => '-ObjC'}
 
   s.subspec 'RRRMethodConfige' do |ss|
 
@@ -74,7 +75,8 @@ Pod::Spec.new do |s|
 
   s.subspec 'RRRMBProgressHUD' do |ss|
 
-  ss.source_files = 'RRRMethod/RRRMBProgressHUD/*'
+  ss.source_files = 'RRRMethod/RRRMBProgressHUD/*.{h,m}'
+  ss.resource     = 'RRRMethod/RRRMBProgressHUD/RRRMBProgressHUD.bundle'
   ss.dependency 'RRRMethod/RRRMethodConfige'
   ss.dependency 'MBProgressHUD', '~> 1.1.0'
 
