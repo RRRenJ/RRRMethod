@@ -29,6 +29,9 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
+  s.user_target_xcconfig = {'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'}
+
+
   s.subspec 'RRRMethodConfige' do |ss|
 
   ss.source_files = 'RRRMethod/RRRMethodConfige/RRRMethodConfige.h'
