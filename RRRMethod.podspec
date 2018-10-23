@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RRRMethod"
-  s.version      = "0.0.3"
+  s.version      = "0.1.0"
   s.summary      = "个人使用的方法类等汇集"
 
 
@@ -75,6 +75,7 @@ Pod::Spec.new do |s|
 
   ss.source_files = 'RRRMethod/RRRMBProgressHUD/*'
   ss.dependency 'RRRMethod/RRRMethodConfige'
+  ss.dependency 'MBProgressHUD'
 
   end
 
