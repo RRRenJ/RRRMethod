@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RRRMethod"
-  s.version      = "0.1.0"
+  s.version      = "0.1.1"
   s.summary      = "个人使用的方法类等汇集"
 
 
