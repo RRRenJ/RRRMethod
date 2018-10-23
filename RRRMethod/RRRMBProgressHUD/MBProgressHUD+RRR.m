@@ -84,7 +84,7 @@
     }
     [self hideHUDForView:view];
     
-    [self show:success icon:@"RRRMBProgressHUD.bundle/success.png" view:view];
+    [self show:success icon:@"MBProgressHUD.bundle/success.png" view:view];
 }
 
 /**
@@ -108,7 +108,7 @@
     }
     [self hideHUDForView:view];
     
-    [self show:error icon:@"RRRMBProgressHUD.bundle/error.png" view:view];
+    [self show:error icon:@"MBProgressHUD.bundle/error.png" view:view];
 }
 
 /**

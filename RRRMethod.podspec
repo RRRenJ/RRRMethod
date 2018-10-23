@@ -29,8 +29,6 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
 
-
-
   s.subspec 'RRRMethodConfige' do |ss|
 
   ss.source_files = 'RRRMethod/RRRMethodConfige/RRRMethodConfige.h'
@@ -74,8 +72,11 @@ Pod::Spec.new do |s|
   s.subspec 'RRRMBProgressHUD' do |ss|
 
   ss.source_files = 'RRRMethod/RRRMBProgressHUD/*'
-  ss.dependency 'MBProgressHUD'
+  ss.dependency 'RRRMethod/RRRMethodConfige'
+  ss.dependency 'MBProgressHUD', '~> 1.1.0'
 
   end
+
+
 
 end
