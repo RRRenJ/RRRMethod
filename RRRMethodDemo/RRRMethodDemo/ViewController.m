@@ -65,7 +65,7 @@
 
 
 - (void)xxx{
-//    [MBProgressHUD showMessage:@"成功而王菲王菲王菲王菲王菲王菲无法"];
+    [MBProgressHUD showMessage:@"成功而王菲王菲王菲王菲王菲王菲无法"];
 //    self.hud = [MBProgressHUD showLoadingProgressMessage:@"加载中"];
 //    [self sending];
 //    _compress = [AVCompress compress];
