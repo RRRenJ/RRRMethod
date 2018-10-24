@@ -12,7 +12,7 @@
 #import "RRRCountDownMethod.h"
 #import "RRRButton.h"
 
-@interface ViewController ()<AVCompressDelegate,UITableViewDataSource>
+@interface ViewController ()<AVCompressDelegate>
 
 @property (nonatomic, strong) NSTimer * timer;
 
@@ -59,45 +59,43 @@
 }
 
 
-- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section{
-    return 0;
-}
+
 
 
 - (void)xxx{
-    [MBProgressHUD showMessage:@"成功而王菲王菲王菲王菲王菲王菲无法"];
-//    self.hud = [MBProgressHUD showLoadingProgressMessage:@"加载中"];
-//    [self sending];
-//    _compress = [AVCompress compress];
-//    NSMutableArray * array = [NSMutableArray array];
-//    for (int index = 0; index < 5; index++) {
-//        if (index == 2) {
-//            _model = [[AVCompressModel alloc]init];
-//            _model.localPath = [NSString stringWithFormat:@"%@/mp4/111.mp4",RRRDocumentPath];
-//            _model.compressQuality = AVCompressQualityWithMedium;
-//            _model.fileType = AVFileTypeMPEG4;
-//            [array addObject:_model];
-//        }else{
-//            AVCompressModel * model = [[AVCompressModel alloc]init];
-//            model.localPath = [NSString stringWithFormat:@"%@/mp4/111.mp4",RRRDocumentPath];
-//            model.compressQuality = AVCompressQualityWithMedium;
-//            model.fileType = AVFileTypeMPEG4;
-//            [array addObject:model];
-//        }
-//
-//    }
-//    _compress.inputModels = array;
-//    _compress.delegate = self;
-//    [_compress startCompress];
+//    [MBProgressHUD showSuccess:@"成功而王菲王菲王菲王菲王菲王菲无法"];
+        self.hud = [MBProgressHUD showLoadingProgressMessage:@"加载中"];
+        [self sending];
+    //    _compress = [AVCompress compress];
+    //    NSMutableArray * array = [NSMutableArray array];
+    //    for (int index = 0; index < 5; index++) {
+    //        if (index == 2) {
+    //            _model = [[AVCompressModel alloc]init];
+    //            _model.localPath = [NSString stringWithFormat:@"%@/mp4/111.mp4",RRRDocumentPath];
+    //            _model.compressQuality = AVCompressQualityWithMedium;
+    //            _model.fileType = AVFileTypeMPEG4;
+    //            [array addObject:_model];
+    //        }else{
+    //            AVCompressModel * model = [[AVCompressModel alloc]init];
+    //            model.localPath = [NSString stringWithFormat:@"%@/mp4/111.mp4",RRRDocumentPath];
+    //            model.compressQuality = AVCompressQualityWithMedium;
+    //            model.fileType = AVFileTypeMPEG4;
+    //            [array addObject:model];
+    //        }
+    //
+    //    }
+    //    _compress.inputModels = array;
+    //    _compress.delegate = self;
+    //    [_compress startCompress];
 }
 
 - (void)xxxx{
-//    AVCompressModel * model = [[AVCompressModel alloc]init];
-//    model.localPath = [NSString stringWithFormat:@"%@/mp4/111.mp4",RRRDocumentPath];
-//    model.compressQuality = AVCompressQualityWithMedium;
-//    model.fileType = AVFileTypeMPEG4;
-//
-//    [_compress addModel:model];
+    //    AVCompressModel * model = [[AVCompressModel alloc]init];
+    //    model.localPath = [NSString stringWithFormat:@"%@/mp4/111.mp4",RRRDocumentPath];
+    //    model.compressQuality = AVCompressQualityWithMedium;
+    //    model.fileType = AVFileTypeMPEG4;
+    //
+    //    [_compress addModel:model];
     [_compress recompressWithModel:_model];
 }
 
@@ -127,7 +125,7 @@
 - (void)countDown{
     self.hud.progress = self.seconds / 60.f;
     if (self.seconds >= 60) {
-        [self.hud hideAnimated:YES];
+        [self.hud hideHUD];
         if ([self.timer isValid]) {
             [self.timer invalidate];
             self.timer = nil;
@@ -141,6 +139,8 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+
 
 
 @end

@@ -26,6 +26,7 @@
 		B75749FB20D1505900757A90 /* NetworkingLoadingView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B75749FA20D1505900757A90 /* NetworkingLoadingView.bundle */; };
 		B75749FE20D152B500757A90 /* UITableView+FooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749FD20D152B500757A90 /* UITableView+FooterView.m */; };
 		B78470C1217EFE5100EEF036 /* MBProgressHUD+RRR.m in Sources */ = {isa = PBXBuildFile; fileRef = B78470BF217EFE5100EEF036 /* MBProgressHUD+RRR.m */; };
+		B78470C521800A9F00EEF036 /* VKMsgSend.m in Sources */ = {isa = PBXBuildFile; fileRef = B78470C321800A9F00EEF036 /* VKMsgSend.m */; };
 		EF9C50CD39101363B3A6F843 /* libPods-RRRMethodDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5585BD9E87922DB0805E6FA5 /* libPods-RRRMethodDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -70,6 +71,8 @@
 		B75749FF20D15B3600757A90 /* RRRMethod.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRRMethod.h; sourceTree = "<group>"; };
 		B78470BF217EFE5100EEF036 /* MBProgressHUD+RRR.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "MBProgressHUD+RRR.m"; sourceTree = "<group>"; };
 		B78470C0217EFE5100EEF036 /* MBProgressHUD+RRR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+RRR.h"; sourceTree = "<group>"; };
+		B78470C321800A9F00EEF036 /* VKMsgSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKMsgSend.m; sourceTree = "<group>"; };
+		B78470C421800A9F00EEF036 /* VKMsgSend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKMsgSend.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +134,7 @@
 		B715A43E20CE9CF1003018EF /* RRRMethod */ = {
 			isa = PBXGroup;
 			children = (
+				B78470C221800A7300EEF036 /* VKMsgSend */,
 				B7574A0020D16FAC00757A90 /* RRRMethodConfige */,
 				B715A45020CEAC1E003018EF /* RRRMBProgressHUD */,
 				B75749EF20CFA00500757A90 /* AVCompress */,
@@ -216,6 +220,15 @@
 				B715A45420CEAF37003018EF /* RRRMethodConfige.h */,
 			);
 			path = RRRMethodConfige;
+			sourceTree = "<group>";
+		};
+		B78470C221800A7300EEF036 /* VKMsgSend */ = {
+			isa = PBXGroup;
+			children = (
+				B78470C421800A9F00EEF036 /* VKMsgSend.h */,
+				B78470C321800A9F00EEF036 /* VKMsgSend.m */,
+			);
+			path = VKMsgSend;
 			sourceTree = "<group>";
 		};
 		E3B84DA9B29269D01A305454 /* Pods */ = {
@@ -327,6 +340,7 @@
 				B75749FE20D152B500757A90 /* UITableView+FooterView.m in Sources */,
 				B75749F920D1483700757A90 /* NetworkingLoadingView.m in Sources */,
 				B75749EE20CF9C3400757A90 /* EqualSpaceFlowLayout.m in Sources */,
+				B78470C521800A9F00EEF036 /* VKMsgSend.m in Sources */,
 				B75749F220CFA03700757A90 /* AVCompress.m in Sources */,
 				B715A42A20CE9CB9003018EF /* AppDelegate.m in Sources */,
 				B715A44920CE9D85003018EF /* RRRButton.m in Sources */,

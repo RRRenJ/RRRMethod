@@ -8,6 +8,10 @@
 
 #import "MBProgressHUD+RRR.h"
 #import "RRRMethodConfige.h"
+#import "VKMsgSend.h"
+#import <objc/runtime.h>
+
+
 
 @implementation MBProgressHUD (RRR)
 /**
@@ -17,30 +21,49 @@
  *  @param icon 图标
  *  @param view 显示的视图
  */
-+ (void)show:(NSString *)text icon:(NSString *)icon view:(UIView *)view
-{
-    // 快速显示一个提示信息
-    MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
-    hud.mode = MBProgressHUDModeCustomView;
-    hud.label.text = text;
-    hud.label.font = [UIFont boldSystemFontOfSize:15];
-    hud.contentColor = [UIColor whiteColor];
-    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.7f];
-    hud.margin = 15;
-    if (icon) {
-        // 设置图片
-        hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
-        hud.minSize = CGSizeMake(160, 90);
++ (void)show:(NSString *)text icon:(NSString *)icon view:(UIView *)view{
+    
+     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
+     hud.mode = MBProgressHUDModeCustomView;
+    //判断MB版本是否大于1.0
+    if ([self containsProperty:@"label"]) {
+        [hud setValue:text forKeyPath:@"label.text"];
+        [hud setValue:[UIFont boldSystemFontOfSize:15] forKeyPath:@"label.font"];
+        [hud setValue:[UIColor whiteColor] forKey:@"contentColor"];
+        [hud setValue:[NSNumber numberWithInteger:0] forKeyPath:@"bezelView.style"];
+        [hud setValue:[[UIColor blackColor] colorWithAlphaComponent:0.7f] forKeyPath:@"bezelView.color"];
+        if (!([UIApplication sharedApplication].keyWindow)) {
+            [hud setValue:[NSValue valueWithCGPoint:CGPointMake(0, -TopHeight)] forKey:@"offset"];
+        }
+        hud.margin = 15;
+        if (icon) {
+            // 设置图片
+            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
+            hud.minSize = CGSizeMake(160, 90);
+        }
+        hud.removeFromSuperViewOnHide = YES;
+        [hud VKCallSelector:@selector(hideAnimated:afterDelay:) error:nil,YES,1.f];
+    }else{
+        [hud setValue:text forKey:@"labelText"];
+        [hud setValue:[UIFont boldSystemFontOfSize:15] forKey:@"labelFont"];
+        if (!([UIApplication sharedApplication].keyWindow)) {
+            [hud setValue:[NSNumber numberWithFloat: -TopHeight] forKey:@"yOffset"];
+        }
+        hud.margin = 15;
+        if (icon) {
+            // 设置图片
+            hud.customView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:icon]];
+            hud.minSize = CGSizeMake(160, 90);
+        }
+        hud.removeFromSuperViewOnHide = YES;
+        [hud VKCallSelector:@selector(hide:afterDelay:) error:nil,YES,1.f];
     }
-    if (!([UIApplication sharedApplication].keyWindow)) {
-        hud.offset= CGPointMake(0, -TopHeight);
-    }
-   
-    // 隐藏时候从父控件中移除
-    hud.removeFromSuperViewOnHide = YES;
-    // 1秒之后再消失
-    [hud hideAnimated:YES afterDelay:1];
+}
+
+
+
++ (void)xxx:(NSString *)errr bools:(BOOL)ee{
+    NSLog(@"%@   %d",errr,ee);
 }
 
 /**
@@ -84,7 +107,7 @@
     }
     [self hideHUDForView:view];
     
-    [self show:success icon:@"MBProgressHUD.bundle/success.png" view:view];
+    [self show:success icon:@"RRRMBProgressHUD.bundle/success.png" view:view];
 }
 
 /**
@@ -108,7 +131,7 @@
     }
     [self hideHUDForView:view];
     
-    [self show:error icon:@"MBProgressHUD.bundle/error.png" view:view];
+    [self show:error icon:@"RRRMBProgressHUD.bundle/error.png" view:view];
 }
 
 /**
@@ -136,24 +159,29 @@
     if (!view){
         view = [UIApplication sharedApplication].keyWindow;
     }
-    // 快速显示一个提示信息
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.animationType = MBProgressHUDAnimationZoom;
-    hud.contentColor = [UIColor whiteColor];
-    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.7f];
-
-    if (!(view == [UIApplication sharedApplication].keyWindow)) {
-        hud.offset= CGPointMake(0, -TopHeight);
+    if ([self containsProperty:@"label"]) {
+        [hud setValue:message forKeyPath:@"label.text"];
+        [hud setValue:[UIFont boldSystemFontOfSize:15] forKeyPath:@"label.font"];
+        [hud setValue:[UIColor whiteColor] forKey:@"contentColor"];
+        [hud setValue:[NSNumber numberWithInteger:0] forKeyPath:@"bezelView.style"];
+        [hud setValue:[[UIColor blackColor] colorWithAlphaComponent:0.7f] forKeyPath:@"bezelView.color"];
+        if (!([UIApplication sharedApplication].keyWindow)) {
+            [hud setValue:[NSValue valueWithCGPoint:CGPointMake(0, -TopHeight)] forKey:@"offset"];
+        }
+    }else{
+        [hud setValue:message forKey:@"labelText"];
+        [hud setValue:[UIFont boldSystemFontOfSize:15] forKey:@"labelFont"];
+        if (!(view == [UIApplication sharedApplication].keyWindow)) {
+            hud.yOffset=  -TopHeight;
+        }
     }
     if (message.length > 0) {
         hud.minSize = CGSizeMake(180, 100);
-        hud.label.text = message;
-        hud.label.font = [UIFont boldSystemFontOfSize:15];
     }
-    // 隐藏时候从父控件中移除
+    hud.margin = 15;
     hud.removeFromSuperViewOnHide = YES;
-
     return hud;
 }
 
@@ -168,23 +196,31 @@
     if (!view){
         view = [UIApplication sharedApplication].keyWindow;
     }
+    
     MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:view animated:YES];
     hud.mode = MBProgressHUDModeAnnularDeterminate;
-    hud.contentColor = [UIColor whiteColor];
-    hud.bezelView.style = MBProgressHUDBackgroundStyleSolidColor;
-    hud.bezelView.color = [[UIColor blackColor] colorWithAlphaComponent:0.7f];
+    //判断MB版本是否大于1.0
+    if ([self containsProperty:@"label"]) {
+        [hud setValue:message forKeyPath:@"label.text"];
+        [hud setValue:[UIFont boldSystemFontOfSize:15] forKeyPath:@"label.font"];
+        [hud setValue:[UIColor whiteColor] forKey:@"contentColor"];
+        [hud setValue:[NSNumber numberWithInteger:0] forKeyPath:@"bezelView.style"];
+        [hud setValue:[[UIColor blackColor] colorWithAlphaComponent:0.7f] forKeyPath:@"bezelView.color"];
+        if (!([UIApplication sharedApplication].keyWindow)) {
+            [hud setValue:[NSValue valueWithCGPoint:CGPointMake(0, -TopHeight)] forKey:@"offset"];
+        }
+    }else{
+        [hud setValue:message forKey:@"labelText"];
+        [hud setValue:[UIFont boldSystemFontOfSize:15] forKey:@"labelFont"];
+        if (!([UIApplication sharedApplication].keyWindow)) {
+            [hud setValue:[NSNumber numberWithFloat: -TopHeight] forKey:@"yOffset"];
+        }
+    }
     if (message.length > 0) {
         hud.minSize = CGSizeMake(180, 100);
-        hud.label.text = message;
-        hud.label.font = [UIFont boldSystemFontOfSize:15];
     }
     return hud;
 }
-
-
-
-
-
 
 /**
  *  手动关闭MBProgressHUD
@@ -206,6 +242,52 @@
         view = [UIApplication sharedApplication].keyWindow;
     }
     [self hideHUDForView:view animated:YES];
+}
+
+
+- (void)hideHUD{
+    [self hideHUDForView:nil];
+}
+
+- (void)hideHUDForView:(UIView *)view{
+    if (!view) {
+        view = [UIApplication sharedApplication].keyWindow;
+    }
+    //判断MB版本是否大于1.0
+    if ([MBProgressHUD containsProperty:@"label"]) {
+        [self VKCallSelector:@selector(hideHUDForView:animated:) error:nil,view,YES];
+    }else{
+        [self hide:YES];
+    }
+}
+
+
+
++ (NSArray *)getPropertys{
+    
+    // 获取当前类的所有属性
+    unsigned int count;// 记录属性个数
+    objc_property_t *properties = class_copyPropertyList(self, &count);
+    // 遍历
+    NSMutableArray *mArray = [NSMutableArray array];
+    for (int i = 0; i < count; i++) {
+        
+        // An opaque type that represents an Objective-C declared property.
+        // objc_property_t 属性类型
+        objc_property_t property = properties[i];
+        // 获取属性的名称 C语言字符串
+        const char *cName = property_getName(property);
+        // 转换为Objective C 字符串
+        NSString *name = [NSString stringWithCString:cName encoding:NSUTF8StringEncoding];
+        [mArray addObject:name];
+    }
+    
+    return mArray.copy;
+}
+
++ (BOOL)containsProperty:(NSString *)property{
+    NSArray * propertys = [self getPropertys];
+    return [propertys containsObject:property];
 }
 
 

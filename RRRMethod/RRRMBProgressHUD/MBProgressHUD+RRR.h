@@ -28,5 +28,7 @@
 + (void)hideHUD;
 + (void)hideHUDForView:(UIView *)view;
 
+- (void)hideHUD;
+- (void)hideHUDForView:(UIView *)view;
 
 @end
