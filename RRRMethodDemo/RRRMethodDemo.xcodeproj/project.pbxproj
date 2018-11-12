@@ -27,6 +27,7 @@
 		B75749FE20D152B500757A90 /* UITableView+FooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749FD20D152B500757A90 /* UITableView+FooterView.m */; };
 		B78470C1217EFE5100EEF036 /* MBProgressHUD+RRR.m in Sources */ = {isa = PBXBuildFile; fileRef = B78470BF217EFE5100EEF036 /* MBProgressHUD+RRR.m */; };
 		B78470C521800A9F00EEF036 /* VKMsgSend.m in Sources */ = {isa = PBXBuildFile; fileRef = B78470C321800A9F00EEF036 /* VKMsgSend.m */; };
+		B7D734C821992E6D0094AC93 /* QRCreateMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D734C621992E6D0094AC93 /* QRCreateMethod.m */; };
 		EF9C50CD39101363B3A6F843 /* libPods-RRRMethodDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5585BD9E87922DB0805E6FA5 /* libPods-RRRMethodDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +74,8 @@
 		B78470C0217EFE5100EEF036 /* MBProgressHUD+RRR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+RRR.h"; sourceTree = "<group>"; };
 		B78470C321800A9F00EEF036 /* VKMsgSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKMsgSend.m; sourceTree = "<group>"; };
 		B78470C421800A9F00EEF036 /* VKMsgSend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKMsgSend.h; sourceTree = "<group>"; };
+		B7D734C621992E6D0094AC93 /* QRCreateMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCreateMethod.m; sourceTree = "<group>"; };
+		B7D734C721992E6D0094AC93 /* QRCreateMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCreateMethod.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +137,7 @@
 		B715A43E20CE9CF1003018EF /* RRRMethod */ = {
 			isa = PBXGroup;
 			children = (
+				B7D734C521992E380094AC93 /* QRCode */,
 				B78470C221800A7300EEF036 /* VKMsgSend */,
 				B7574A0020D16FAC00757A90 /* RRRMethodConfige */,
 				B715A45020CEAC1E003018EF /* RRRMBProgressHUD */,
@@ -229,6 +233,15 @@
 				B78470C321800A9F00EEF036 /* VKMsgSend.m */,
 			);
 			path = VKMsgSend;
+			sourceTree = "<group>";
+		};
+		B7D734C521992E380094AC93 /* QRCode */ = {
+			isa = PBXGroup;
+			children = (
+				B7D734C721992E6D0094AC93 /* QRCreateMethod.h */,
+				B7D734C621992E6D0094AC93 /* QRCreateMethod.m */,
+			);
+			path = QRCode;
 			sourceTree = "<group>";
 		};
 		E3B84DA9B29269D01A305454 /* Pods */ = {
@@ -337,6 +350,7 @@
 				B715A42D20CE9CB9003018EF /* ViewController.m in Sources */,
 				B78470C1217EFE5100EEF036 /* MBProgressHUD+RRR.m in Sources */,
 				B715A43820CE9CBB003018EF /* main.m in Sources */,
+				B7D734C821992E6D0094AC93 /* QRCreateMethod.m in Sources */,
 				B75749FE20D152B500757A90 /* UITableView+FooterView.m in Sources */,
 				B75749F920D1483700757A90 /* NetworkingLoadingView.m in Sources */,
 				B75749EE20CF9C3400757A90 /* EqualSpaceFlowLayout.m in Sources */,
