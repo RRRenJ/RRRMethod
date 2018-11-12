@@ -2,7 +2,7 @@
 Pod::Spec.new do |s|
 
   s.name         = "RRRMethod"
-  s.version      = "0.1.4"
+  s.version      = "0.1.5"
   s.summary      = "个人使用的方法类等汇集"
 
 
@@ -79,7 +79,7 @@ Pod::Spec.new do |s|
 
   end
 
-  s.subspec 'VKMsgSend' do |ss|
+  s.subspec 'QRCode' do |ss|
 
   ss.source_files = 'RRRMethod/QRCode/*.{h,m}'
 
