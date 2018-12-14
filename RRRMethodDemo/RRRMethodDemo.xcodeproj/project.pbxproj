@@ -18,6 +18,9 @@
 		B715A44A20CE9D85003018EF /* RRRLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = B715A44520CE9D85003018EF /* RRRLabel.m */; };
 		B715A44B20CE9D85003018EF /* RRRTextField.m in Sources */ = {isa = PBXBuildFile; fileRef = B715A44720CE9D85003018EF /* RRRTextField.m */; };
 		B715A45B20CEC117003018EF /* RRRMBProgressHUD.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B715A45A20CEC117003018EF /* RRRMBProgressHUD.bundle */; };
+		B727118721C2571F00810737 /* RRRLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B727118621C2571F00810737 /* RRRLoadView.m */; };
+		B727118A21C25C4200810737 /* UIViewController+RRRLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = B727118921C25C4200810737 /* UIViewController+RRRLoadingView.m */; };
+		B727118C21C262FE00810737 /* RRRLoadView.bundle in Resources */ = {isa = PBXBuildFile; fileRef = B727118B21C262FE00810737 /* RRRLoadView.bundle */; };
 		B75749ED20CF9C3400757A90 /* RRRCountDownMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749E820CF9C3400757A90 /* RRRCountDownMethod.m */; };
 		B75749EE20CF9C3400757A90 /* EqualSpaceFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749EB20CF9C3400757A90 /* EqualSpaceFlowLayout.m */; };
 		B75749F220CFA03700757A90 /* AVCompress.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749F120CFA03700757A90 /* AVCompress.m */; };
@@ -27,6 +30,7 @@
 		B75749FE20D152B500757A90 /* UITableView+FooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B75749FD20D152B500757A90 /* UITableView+FooterView.m */; };
 		B78470C1217EFE5100EEF036 /* MBProgressHUD+RRR.m in Sources */ = {isa = PBXBuildFile; fileRef = B78470BF217EFE5100EEF036 /* MBProgressHUD+RRR.m */; };
 		B78470C521800A9F00EEF036 /* VKMsgSend.m in Sources */ = {isa = PBXBuildFile; fileRef = B78470C321800A9F00EEF036 /* VKMsgSend.m */; };
+		B79D608421C2555400C0C538 /* DataLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79D608321C2555400C0C538 /* DataLoadView.m */; };
 		B7D734C821992E6D0094AC93 /* QRCreateMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D734C621992E6D0094AC93 /* QRCreateMethod.m */; };
 		EF9C50CD39101363B3A6F843 /* libPods-RRRMethodDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5585BD9E87922DB0805E6FA5 /* libPods-RRRMethodDemo.a */; };
 /* End PBXBuildFile section */
@@ -56,6 +60,11 @@
 		B715A45420CEAF37003018EF /* RRRMethodConfige.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRRMethodConfige.h; sourceTree = "<group>"; };
 		B715A45520CEB02F003018EF /* RRRMethodDemo_Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RRRMethodDemo_Prefix.pch; sourceTree = "<group>"; };
 		B715A45A20CEC117003018EF /* RRRMBProgressHUD.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RRRMBProgressHUD.bundle; sourceTree = "<group>"; };
+		B727118521C2571F00810737 /* RRRLoadView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRRLoadView.h; sourceTree = "<group>"; };
+		B727118621C2571F00810737 /* RRRLoadView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRRLoadView.m; sourceTree = "<group>"; };
+		B727118821C25C4200810737 /* UIViewController+RRRLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+RRRLoadingView.h"; sourceTree = "<group>"; };
+		B727118921C25C4200810737 /* UIViewController+RRRLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+RRRLoadingView.m"; sourceTree = "<group>"; };
+		B727118B21C262FE00810737 /* RRRLoadView.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = RRRLoadView.bundle; sourceTree = "<group>"; };
 		B75749E820CF9C3400757A90 /* RRRCountDownMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRRCountDownMethod.m; sourceTree = "<group>"; };
 		B75749E920CF9C3400757A90 /* RRRCountDownMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRRCountDownMethod.h; sourceTree = "<group>"; };
 		B75749EB20CF9C3400757A90 /* EqualSpaceFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EqualSpaceFlowLayout.m; sourceTree = "<group>"; };
@@ -74,6 +83,8 @@
 		B78470C0217EFE5100EEF036 /* MBProgressHUD+RRR.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MBProgressHUD+RRR.h"; sourceTree = "<group>"; };
 		B78470C321800A9F00EEF036 /* VKMsgSend.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = VKMsgSend.m; sourceTree = "<group>"; };
 		B78470C421800A9F00EEF036 /* VKMsgSend.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VKMsgSend.h; sourceTree = "<group>"; };
+		B79D608221C2555400C0C538 /* DataLoadView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DataLoadView.h; sourceTree = "<group>"; };
+		B79D608321C2555400C0C538 /* DataLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataLoadView.m; sourceTree = "<group>"; };
 		B7D734C621992E6D0094AC93 /* QRCreateMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCreateMethod.m; sourceTree = "<group>"; };
 		B7D734C721992E6D0094AC93 /* QRCreateMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCreateMethod.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -137,6 +148,7 @@
 		B715A43E20CE9CF1003018EF /* RRRMethod */ = {
 			isa = PBXGroup;
 			children = (
+				B727118421C2571F00810737 /* RRRLoadView */,
 				B7D734C521992E380094AC93 /* QRCode */,
 				B78470C221800A7300EEF036 /* VKMsgSend */,
 				B7574A0020D16FAC00757A90 /* RRRMethodConfige */,
@@ -147,6 +159,8 @@
 				B715A44C20CEA216003018EF /* FooterView */,
 				B715A43F20CE9CF1003018EF /* FactoryView */,
 				B75749FF20D15B3600757A90 /* RRRMethod.h */,
+				B79D608221C2555400C0C538 /* DataLoadView.h */,
+				B79D608321C2555400C0C538 /* DataLoadView.m */,
 			);
 			name = RRRMethod;
 			path = ../../RRRMethod;
@@ -187,6 +201,18 @@
 				B715A45A20CEC117003018EF /* RRRMBProgressHUD.bundle */,
 			);
 			path = RRRMBProgressHUD;
+			sourceTree = "<group>";
+		};
+		B727118421C2571F00810737 /* RRRLoadView */ = {
+			isa = PBXGroup;
+			children = (
+				B727118821C25C4200810737 /* UIViewController+RRRLoadingView.h */,
+				B727118921C25C4200810737 /* UIViewController+RRRLoadingView.m */,
+				B727118521C2571F00810737 /* RRRLoadView.h */,
+				B727118621C2571F00810737 /* RRRLoadView.m */,
+				B727118B21C262FE00810737 /* RRRLoadView.bundle */,
+			);
+			path = RRRLoadView;
 			sourceTree = "<group>";
 		};
 		B75749E720CF9C3400757A90 /* CountDownMethod */ = {
@@ -314,6 +340,7 @@
 				B715A43520CE9CBB003018EF /* LaunchScreen.storyboard in Resources */,
 				B715A45B20CEC117003018EF /* RRRMBProgressHUD.bundle in Resources */,
 				B715A43220CE9CBB003018EF /* Assets.xcassets in Resources */,
+				B727118C21C262FE00810737 /* RRRLoadView.bundle in Resources */,
 				B715A43020CE9CB9003018EF /* Main.storyboard in Resources */,
 				B75749FB20D1505900757A90 /* NetworkingLoadingView.bundle in Resources */,
 			);
@@ -349,8 +376,10 @@
 			files = (
 				B715A42D20CE9CB9003018EF /* ViewController.m in Sources */,
 				B78470C1217EFE5100EEF036 /* MBProgressHUD+RRR.m in Sources */,
+				B79D608421C2555400C0C538 /* DataLoadView.m in Sources */,
 				B715A43820CE9CBB003018EF /* main.m in Sources */,
 				B7D734C821992E6D0094AC93 /* QRCreateMethod.m in Sources */,
+				B727118721C2571F00810737 /* RRRLoadView.m in Sources */,
 				B75749FE20D152B500757A90 /* UITableView+FooterView.m in Sources */,
 				B75749F920D1483700757A90 /* NetworkingLoadingView.m in Sources */,
 				B75749EE20CF9C3400757A90 /* EqualSpaceFlowLayout.m in Sources */,
@@ -360,6 +389,7 @@
 				B715A44920CE9D85003018EF /* RRRButton.m in Sources */,
 				B715A44820CE9D85003018EF /* RRRSlider.m in Sources */,
 				B715A44A20CE9D85003018EF /* RRRLabel.m in Sources */,
+				B727118A21C25C4200810737 /* UIViewController+RRRLoadingView.m in Sources */,
 				B75749ED20CF9C3400757A90 /* RRRCountDownMethod.m in Sources */,
 				B75749F520D0C71800757A90 /* AVMutableVideoComposition+FixVideoDirection.m in Sources */,
 				B715A44B20CE9D85003018EF /* RRRTextField.m in Sources */,

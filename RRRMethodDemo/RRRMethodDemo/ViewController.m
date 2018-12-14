@@ -11,6 +11,9 @@
 #import "RRRMethod.h"
 #import "RRRCountDownMethod.h"
 #import "RRRButton.h"
+#import "DataLoadView.h"
+
+#import "UIViewController+RRRLoadingView.h"
 
 @interface ViewController ()<AVCompressDelegate>
 
@@ -37,8 +40,12 @@
     RRRButton * bt = [RRRButton createBtWithFrame:CGRectMake(100, 100, 200, 100) type:UIButtonTypeCustom title:nil titleColor:nil btColor:[UIColor blueColor] andTarget:self action:@selector(xxx) forControlEvents:UIControlEventTouchUpInside];
     [self.view addSubview:bt];
     
-    RRRCountDownMethod * count = [[RRRCountDownMethod alloc] initWithBt:bt startTitle:@"开始" waitTitle:@"进行" endTitle:@"重来" totalTime:9];
+//    RRRCountDownMethod * count = [[RRRCountDownMethod alloc] initWithBt:bt startTitle:@"开始" waitTitle:@"进行" endTitle:@"重来" totalTime:9];
 //
+    
+    
+    
+    
 //    RRRButton * bt1 = [RRRButton createBtWithFrame:CGRectMake(100, 300, 200, 100) type:UIButtonTypeCustom title:nil titleColor:nil btColor:[UIColor blueColor] andTarget:self action:@selector(xxxx) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:bt1];
 //
@@ -63,9 +70,15 @@
 
 
 - (void)xxx{
+    
+//    [self loadDataWithRemind:@"加载中"];
+//
+//    [self performSelector:@selector(loadFail:andRemind:) withObject:nil afterDelay:5];
+    
+//    [DATALOAD loadDataWithController:self];
 //    [MBProgressHUD showSuccess:@"成功而王菲王菲王菲王菲王菲王菲无法"];
-        self.hud = [MBProgressHUD showLoadingProgressMessage:@"加载中"];
-        [self sending];
+//        self.hud = [MBProgressHUD showLoadingProgressMessage:@"加载中"];
+//        [self sending];
     //    _compress = [AVCompress compress];
     //    NSMutableArray * array = [NSMutableArray array];
     //    for (int index = 0; index < 5; index++) {
