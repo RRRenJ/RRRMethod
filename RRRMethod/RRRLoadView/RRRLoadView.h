@@ -17,7 +17,7 @@
 //定制失败view 没有默认
 @property (nonatomic, strong) UIView * loadFailView;
 //加载数据时调用
-- (void)loadDataWithController:(UIViewController *)viewController;
+- (void)loadDataWithController:(UIViewController *)viewController onWindow:(BOOL)on;
 //加载失败时调用
 - (void)loadFail:(void(^)(UIButton * button))callBack;
 //加载成功时调用

@@ -21,7 +21,7 @@ static const void * loadFailViewKey = &loadFailViewKey;
 static const void * loadingBackViewKey = &loadingBackViewKey;
 static const void * loadActionCallBackKey = &loadActionCallBackKey;
 static const void * loadingRemindKey = &loadingRemindKey;
-//static const void * loadFailRemindKey = &loadFailRemindKey;
+static const void * onWindowsKey = &onWindowsKey;
 
 
 @interface UIViewController ()
@@ -35,6 +35,8 @@ static const void * loadingRemindKey = &loadingRemindKey;
 
 @property (nonatomic, copy) NSString * loadingRemind;
 
+@property (nonatomic, strong) NSNumber * onWindows;
+
 //@property (nonatomic, copy) NSString * loadFailRemind;
 
 
@@ -44,29 +46,60 @@ static const void * loadingRemindKey = &loadingRemindKey;
 @implementation UIViewController (RRRLoadingView)
 
 
-- (void)loadDataWithRemind:(nullable NSString *)remind{
+- (void)loadDataWithRemind:(nullable NSString *)remind onWindow:(BOOL)isOn{
     if (!self.loadingBackView) {
         self.loadingBackView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LOAD_WIDTH, LOAD_HEIGHT)];
         self.loadingBackView.backgroundColor = LOAD_RGB(243, 243, 243, 1);
     }
-    if (![self.view.subviews containsObject:self.loadingBackView]) {
-        [self.view addSubview:self.loadingBackView];
+    
+    
+    if (isOn) {
+        self.onWindows = [NSNumber numberWithBool:isOn];
+        UIWindow * window = [UIApplication sharedApplication].keyWindow;
+        if (![window.subviews containsObject:self.loadingBackView]) {
+            
+            CGFloat y = 0;
+            CGFloat height = LOAD_HEIGHT;
+            if (self.navigationController) {
+                y = LOAD_TOP_HEIGHT;
+                height = height - LOAD_TOP_HEIGHT;
+            }
+            if (self.tabBarController) {
+                height = height - LOAD_BOTTOM_HEIGHT - 49;
+            }
+            
+            if (self.navigationController.tabBarController) {
+                if ((height != LOAD_HEIGHT - LOAD_TOP_HEIGHT - LOAD_BOTTOM_HEIGHT - 49) && (height != LOAD_HEIGHT - LOAD_BOTTOM_HEIGHT - 49)) {
+                    height = height - LOAD_BOTTOM_HEIGHT - 49;
+                }
+            }
+            self.loadingBackView.frame = CGRectMake(0, y, LOAD_WIDTH, height);
+            [window addSubview:self.loadingBackView];
+        }
+    }else{
+        if (![self.view.subviews containsObject:self.loadingBackView]) {
+            [self.view addSubview:self.loadingBackView];
+        }
+        
+        if ([self.view isKindOfClass:[UITableView class]]) {
+            UITableView * view = (UITableView *)self.view;
+            view.scrollEnabled = NO;
+        }
+        if ([self.view isKindOfClass:[UICollectionView class]]) {
+            UICollectionView * view = (UICollectionView *)self.view;
+            view.scrollEnabled = NO;
+        }
+        if ([self.view isKindOfClass:[UIScrollView class]]) {
+            UIScrollView * view = (UIScrollView *)self.view;
+            view.scrollEnabled = NO;
+        }
     }
     
-    if ([self.view isKindOfClass:[UITableView class]]) {
-        UITableView * view = (UITableView *)self.view;
-        view.scrollEnabled = NO;
-    }
-    if ([self.view isKindOfClass:[UICollectionView class]]) {
-        UICollectionView * view = (UICollectionView *)self.view;
-        view.scrollEnabled = NO;
-    }
-    if ([self.view isKindOfClass:[UIScrollView class]]) {
-        UIScrollView * view = (UIScrollView *)self.view;
-        view.scrollEnabled = NO;
-    }
+    
+    
     if (!self.loadingView) {
-        self.loadingView = [[UIView alloc]initWithFrame:CGRectMake(0, LOAD_HEIGHT/2.f - LOAD_TOP_HEIGHT , LOAD_WIDTH,100)];
+        CGFloat y = self.navigationController ? 0 : LOAD_TOP_HEIGHT;
+        self.loadingView = [[UIView alloc]initWithFrame:CGRectMake(0, y + CGRectGetMaxY(self.loadingBackView.frame)/3 - 50 , LOAD_WIDTH,100)];
         UIActivityIndicatorView * indicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [self.loadingView addSubview:indicatorView];
         indicatorView.frame = CGRectMake(LOAD_WIDTH/2 - 25, 0, 50, 50);
@@ -91,7 +124,8 @@ static const void * loadingRemindKey = &loadingRemindKey;
 - (void)loadFail:(LoadActionCallBack)callBack andRemind:(nullable NSString *)remind{
     [self.loadingView removeFromSuperview];
     if (!self.loadFailView) {
-        self.loadFailView = [[UIView alloc]initWithFrame:CGRectMake(0, LOAD_HEIGHT/2.f - LOAD_TOP_HEIGHT, LOAD_WIDTH,200)];
+        CGFloat y = self.navigationController ? 0 : LOAD_TOP_HEIGHT;
+        self.loadFailView = [[UIView alloc]initWithFrame:CGRectMake(0,y + CGRectGetMaxY(self.loadingBackView.frame)/3 - 100, LOAD_WIDTH,200)];
         
         UIImageView * imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"RRRLoadView.bundle/networkError.png"]];
         imageView.frame = CGRectMake(LOAD_WIDTH/2 - 30, 0, 60, 60);
@@ -118,10 +152,11 @@ static const void * loadingRemindKey = &loadingRemindKey;
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
         [self setCallBack:callBack];
     }
+    
+
     if (![self.loadingBackView.subviews containsObject:self.loadFailView]) {
         [self.loadingBackView addSubview:self.loadFailView];
     }
-
 }
 
 - (void)loadSucess{
@@ -145,7 +180,7 @@ static const void * loadingRemindKey = &loadingRemindKey;
         self.callBack(sender);
     }
     [self.loadFailView removeFromSuperview];
-    [self loadDataWithRemind:self.loadingRemind];
+    [self loadDataWithRemind:self.loadingRemind onWindow:self.onWindows.boolValue];
 }
 
 
@@ -192,13 +227,14 @@ static const void * loadingRemindKey = &loadingRemindKey;
 }
 
 
-//- (NSString *)loadFailRemind{
-//    return objc_getAssociatedObject(self, loadFailRemindKey);
-//}
-//
-//- (void)setLoadFailRemind:(NSString *)loadFailRemind{
-//    return objc_setAssociatedObject(self, loadFailRemindKey, loadFailRemind, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
-//}
+- (NSNumber *)onWindows{
+    return objc_getAssociatedObject(self, onWindowsKey);
+}
+
+
+- (void)setOnWindows:(NSNumber *)onWindows{
+    return objc_setAssociatedObject(self, onWindowsKey, onWindows, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
 
 
 @end

@@ -17,7 +17,7 @@ typedef void(^LoadActionCallBack)(UIButton *button);
 @property (nonatomic, copy) LoadActionCallBack callBack;
 
 
-- (void)loadDataWithRemind:(nullable NSString *)remind;
+- (void)loadDataWithRemind:(nullable NSString *)remind onWindow:(BOOL)isOn;
 
 - (void)loadFail:(LoadActionCallBack)callBack andRemind:(nullable NSString *)remind;
 

@@ -19,29 +19,56 @@
 @implementation RRRLoadView
 
 #pragma mark - public
-- (void)loadDataWithController:(UIViewController *)viewController{
+- (void)loadDataWithController:(UIViewController *)viewController onWindow:(BOOL)on{
     if (self.backViewColor) {
         self.loadingBackView.backgroundColor = self.backViewColor;
     }
-    if (![viewController.view.subviews containsObject:self.loadingBackView]) {
-        [viewController.view addSubview:self.loadingBackView];
-    }
-    if ([viewController.view isKindOfClass:[UITableView class]]) {
-        UITableView * view = (UITableView *)viewController.view;
-        view.scrollEnabled = NO;
-    }
-    if ([viewController.view isKindOfClass:[UICollectionView class]]) {
-        UICollectionView * view = (UICollectionView *)viewController.view;
-        view.scrollEnabled = NO;
-    }
-    if ([viewController.view isKindOfClass:[UIScrollView class]]) {
-        UIScrollView * view = (UIScrollView *)viewController.view;
-        view.scrollEnabled = NO;
-    }
     
+    if (on) {
+        UIWindow * window = [UIApplication sharedApplication].keyWindow;
+        if (![window.subviews containsObject:self.loadingBackView]) {
+            
+            CGFloat y = 0;
+            CGFloat height = SCR_HEIGHT;
+            if (viewController.navigationController) {
+                y = TopHeight;
+                height = height - TopHeight;
+            }
+            if (viewController.tabBarController) {
+                height = height - TabBarHeight;
+            }
+            
+            if (viewController.navigationController.tabBarController) {
+                if ((height != SCR_HEIGHT - TopHeight - TabBarHeight) && (height != SCR_HEIGHT - TabBarHeight)) {
+                    height = height - TabBarHeight;
+                }
+            }
+            self.loadingBackView.frame = CGRectMake(0, y, SCR_WIDTH, height);
+            [window addSubview:self.loadingBackView];
+        }
+    }else{
+        if (![viewController.view.subviews containsObject:self.loadingBackView]) {
+            [viewController.view addSubview:self.loadingBackView];
+        }
+        if ([viewController.view isKindOfClass:[UITableView class]]) {
+            UITableView * view = (UITableView *)viewController.view;
+            view.scrollEnabled = NO;
+        }
+        if ([viewController.view isKindOfClass:[UICollectionView class]]) {
+            UICollectionView * view = (UICollectionView *)viewController.view;
+            view.scrollEnabled = NO;
+        }
+        if ([viewController.view isKindOfClass:[UIScrollView class]]) {
+            UIScrollView * view = (UIScrollView *)viewController.view;
+            view.scrollEnabled = NO;
+        }
+    }
     if (self.loadingView && ![self.loadingBackView.subviews containsObject:self.loadingView]) {
         [self.loadingBackView addSubview:self.loadingView];
     }
+    
+    
+    
 }
 
 - (void)loadFail:(void (^)(UIButton *))callBack{
