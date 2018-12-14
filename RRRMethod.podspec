@@ -98,6 +98,7 @@ Pod::Spec.new do |s|
 
   ss.source_files = 'RRRMethod/RRRLoadView/*.{h,m}'
   ss.resource     = 'RRRMethod/RRRLoadView/RRRLoadView.bundle'
+  ss.dependency 'RRRMethod/RRRMethodConfige'
 
   end
 
