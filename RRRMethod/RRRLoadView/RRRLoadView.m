@@ -67,8 +67,6 @@
         [self.loadingBackView addSubview:self.loadingView];
     }
     
-    
-    
 }
 
 - (void)loadFail:(void (^)(UIButton *))callBack{
