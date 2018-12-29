@@ -46,6 +46,57 @@ static const void * onWindowsKey = &onWindowsKey;
 @implementation UIViewController (RRRLoadingView)
 
 
+- (void)loadDataFullScreenWithRemind:(NSString *)remind{
+    if (!self.loadingBackView) {
+        self.loadingBackView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LOAD_WIDTH, LOAD_HEIGHT)];
+        self.loadingBackView.backgroundColor = LOAD_RGB(243, 243, 243, 1);
+    }
+
+    self.onWindows = [NSNumber numberWithBool:YES];
+    UIWindow * window = [UIApplication sharedApplication].keyWindow;
+    if (![window.subviews containsObject:self.loadingBackView]) {
+        
+        CGFloat y = 0;
+        CGFloat height = LOAD_HEIGHT;
+        if (self.navigationController) {
+            height = height;
+        }
+        if (self.tabBarController) {
+            height = height - LOAD_BOTTOM_HEIGHT - 49;
+        }
+        
+        if (self.navigationController.tabBarController) {
+            if ((height != LOAD_HEIGHT - LOAD_BOTTOM_HEIGHT - 49) && (height != LOAD_HEIGHT - LOAD_BOTTOM_HEIGHT - 49)) {
+                height = height - LOAD_BOTTOM_HEIGHT - 49;
+            }
+        }
+        self.loadingBackView.frame = CGRectMake(0, y, LOAD_WIDTH, height);
+        [window addSubview:self.loadingBackView];
+    }
+
+    if (!self.loadingView) {
+        CGFloat y =  LOAD_TOP_HEIGHT;
+        self.loadingView = [[UIView alloc]initWithFrame:CGRectMake(0, y + CGRectGetMaxY(self.loadingBackView.frame)/3 - 50 , LOAD_WIDTH,100)];
+        UIActivityIndicatorView * indicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [self.loadingView addSubview:indicatorView];
+        indicatorView.frame = CGRectMake(LOAD_WIDTH/2 - 25, 0, 50, 50);
+        [indicatorView startAnimating];
+        
+        UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(20, 70, LOAD_WIDTH - 40, 30)];
+        [self.loadingView addSubview:label];
+        label.text = remind ? remind : @"正在努力请求数据...";
+        self.loadingRemind = remind ? remind : nil;
+        label.textColor = LOAD_RGB(153, 153, 153, 1);
+        label.font = [UIFont systemFontOfSize:15];
+        label.numberOfLines = 2;
+        label.textAlignment = NSTextAlignmentCenter;
+    }
+    if (![self.loadingBackView.subviews containsObject:self.loadingView]) {
+        [self.loadingBackView addSubview:self.loadingView];
+    }
+    
+}
+
 - (void)loadDataWithRemind:(nullable NSString *)remind onWindow:(BOOL)isOn{
     if (!self.loadingBackView) {
         self.loadingBackView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LOAD_WIDTH, LOAD_HEIGHT)];

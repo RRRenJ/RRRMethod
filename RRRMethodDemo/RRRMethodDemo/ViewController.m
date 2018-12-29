@@ -74,8 +74,8 @@
 //    [self loadDataWithRemind:@"加载中" onWindow:YES];
 ////
 //    [self performSelector:@selector(loadFail:andRemind:) withObject:nil afterDelay:5];
-    
-    [DATALOAD loadDataWithController:self onWindow:YES];
+    [self loadDataFullScreenWithRemind:nil];
+//    [DATALOAD loadDataWithController:self onWindow:YES];
 //    [MBProgressHUD showSuccess:@"成功而王菲王菲王菲王菲王菲王菲无法"];
 //        self.hud = [MBProgressHUD showLoadingProgressMessage:@"加载中"];
 //        [self sending];

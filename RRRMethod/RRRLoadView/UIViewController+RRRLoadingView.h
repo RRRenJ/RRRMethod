@@ -19,6 +19,8 @@ typedef void(^LoadActionCallBack)(UIButton *button);
 
 - (void)loadDataWithRemind:(nullable NSString *)remind onWindow:(BOOL)isOn;
 
+- (void)loadDataFullScreenWithRemind:(nullable NSString *)remind;
+
 - (void)loadFail:(LoadActionCallBack)callBack andRemind:(nullable NSString *)remind;
 
 - (void)loadSucess;
