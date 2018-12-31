@@ -19,9 +19,12 @@
 static const void * loadingViewKey = &loadingViewKey;
 static const void * loadFailViewKey = &loadFailViewKey;
 static const void * loadingBackViewKey = &loadingBackViewKey;
-static const void * loadActionCallBackKey = &loadActionCallBackKey;
+static const void * loadReloadCallBackKey = &loadReloadCallBackKey;
+static const void * loadCancelCallBackKey = &loadCancelCallBackKey;
+static const void * loadingCancelTitleKey = &loadingCancelTitleKey;
 static const void * loadingRemindKey = &loadingRemindKey;
 static const void * onWindowsKey = &onWindowsKey;
+static const void * isFullKey = &isFullKey;
 
 
 @interface UIViewController ()
@@ -33,12 +36,19 @@ static const void * onWindowsKey = &onWindowsKey;
 
 @property (nonatomic, strong) UIView * loadFailView;
 
+@property (nonatomic, strong) UIButton * cancelBt;
+
+@property (nonatomic, copy) NSString * cancelTitle;
+
 @property (nonatomic, copy) NSString * loadingRemind;
 
 @property (nonatomic, strong) NSNumber * onWindows;
 
-//@property (nonatomic, copy) NSString * loadFailRemind;
+@property (nonatomic, strong) NSNumber * isFull;
 
+@property (nonatomic, copy) LoadActionCallBack cancelBack;
+
+@property (nonatomic, copy) LoadActionCallBack reloadBack;
 
 @end
 
@@ -46,13 +56,14 @@ static const void * onWindowsKey = &onWindowsKey;
 @implementation UIViewController (RRRLoadingView)
 
 
-- (void)loadDataFullScreenWithRemind:(NSString *)remind{
+- (void)loadDataFullScreenWithRemind:(NSString *)remind  cancelBtTitle:(nonnull NSString *)title cancel:(nonnull LoadActionCallBack)callBack{
     if (!self.loadingBackView) {
         self.loadingBackView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LOAD_WIDTH, LOAD_HEIGHT)];
         self.loadingBackView.backgroundColor = LOAD_RGB(243, 243, 243, 1);
     }
 
     self.onWindows = [NSNumber numberWithBool:YES];
+    self.isFull = [NSNumber numberWithBool:YES];
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
     if (![window.subviews containsObject:self.loadingBackView]) {
         
@@ -76,7 +87,11 @@ static const void * onWindowsKey = &onWindowsKey;
 
     if (!self.loadingView) {
         CGFloat y =  LOAD_TOP_HEIGHT;
-        self.loadingView = [[UIView alloc]initWithFrame:CGRectMake(0, y + CGRectGetMaxY(self.loadingBackView.frame)/3 - 50 , LOAD_WIDTH,100)];
+        self.loadingView = [[UIView alloc]initWithFrame:CGRectMake(0, y + CGRectGetMaxY(self.loadingBackView.frame)/3 - 50 , LOAD_WIDTH,200)];
+        
+        self.loadingView.userInteractionEnabled = YES;
+        
+        
         UIActivityIndicatorView * indicatorView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
         [self.loadingView addSubview:indicatorView];
         indicatorView.frame = CGRectMake(LOAD_WIDTH/2 - 25, 0, 50, 50);
@@ -90,10 +105,27 @@ static const void * onWindowsKey = &onWindowsKey;
         label.font = [UIFont systemFontOfSize:15];
         label.numberOfLines = 2;
         label.textAlignment = NSTextAlignmentCenter;
+
+        
+        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+        self.cancelTitle = title ?  title : @"返回";
+        [button setTitle:self.cancelTitle forState:UIControlStateNormal];
+        [button setTitleColor:LOAD_RGB(153, 153, 153, 1) forState:UIControlStateNormal];
+        [self.loadingView addSubview:button];
+        button.frame = CGRectMake(LOAD_WIDTH/2 - 60, CGRectGetMaxY(label.frame) + 20, 120, 36);
+        button.titleLabel.font = [UIFont systemFontOfSize:15];
+        button.layer.cornerRadius = 18;
+        button.layer.masksToBounds = YES;
+        button.layer.borderColor = LOAD_RGB(153, 153, 153, 1).CGColor;
+        button.layer.borderWidth = 1;
+        [button addTarget:self action:@selector(cancelClicked:) forControlEvents:UIControlEventTouchUpInside];
+        self.cancelBack = callBack;
     }
+    
     if (![self.loadingBackView.subviews containsObject:self.loadingView]) {
         [self.loadingBackView addSubview:self.loadingView];
     }
+
     
 }
 
@@ -103,7 +135,7 @@ static const void * onWindowsKey = &onWindowsKey;
         self.loadingBackView.backgroundColor = LOAD_RGB(243, 243, 243, 1);
     }
     
-    
+    self.isFull = [NSNumber numberWithBool:NO];
     if (isOn) {
         self.onWindows = [NSNumber numberWithBool:isOn];
         UIWindow * window = [UIApplication sharedApplication].keyWindow;
@@ -146,8 +178,6 @@ static const void * onWindowsKey = &onWindowsKey;
         }
     }
     
-    
-    
     if (!self.loadingView) {
         CGFloat y = self.navigationController ? 0 : LOAD_TOP_HEIGHT;
         self.loadingView = [[UIView alloc]initWithFrame:CGRectMake(0, y + CGRectGetMaxY(self.loadingBackView.frame)/3 - 50 , LOAD_WIDTH,100)];
@@ -175,12 +205,11 @@ static const void * onWindowsKey = &onWindowsKey;
 - (void)loadFail:(LoadActionCallBack)callBack andRemind:(nullable NSString *)remind{
     [self.loadingView removeFromSuperview];
     if (!self.loadFailView) {
-        CGFloat y = self.navigationController ? 0 : LOAD_TOP_HEIGHT;
-        self.loadFailView = [[UIView alloc]initWithFrame:CGRectMake(0,y + CGRectGetMaxY(self.loadingBackView.frame)/3 - 100, LOAD_WIDTH,200)];
+        CGFloat y = self.isFull ? LOAD_TOP_HEIGHT :( self.navigationController ? 0 : LOAD_TOP_HEIGHT);
+        self.loadFailView = [[UIView alloc]initWithFrame:CGRectMake(0,y + CGRectGetMaxY(self.loadingBackView.frame)/3 - 50, LOAD_WIDTH,200)];
         
         UIImageView * imageView = [[UIImageView alloc]initWithImage:[UIImage imageNamed:@"RRRLoadView.bundle/networkError.png"]];
         imageView.frame = CGRectMake(LOAD_WIDTH/2 - 30, 0, 60, 60);
-        
         [self.loadFailView addSubview:imageView];
         
         UILabel * label = [[UILabel alloc]initWithFrame:CGRectMake(20, CGRectGetMaxY(imageView.frame) + 10, LOAD_WIDTH - 40, 40)];
@@ -190,6 +219,7 @@ static const void * onWindowsKey = &onWindowsKey;
         label.font = [UIFont systemFontOfSize:15];
         label.numberOfLines = 2;
         label.textAlignment = NSTextAlignmentCenter;
+        
         UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
         [button setTitle:@"点击重新加载" forState:UIControlStateNormal];
         [button setTitleColor:LOAD_RGB(153, 153, 153, 1) forState:UIControlStateNormal];
@@ -201,7 +231,7 @@ static const void * onWindowsKey = &onWindowsKey;
         button.layer.borderColor = LOAD_RGB(153, 153, 153, 1).CGColor;
         button.layer.borderWidth = 1;
         [button addTarget:self action:@selector(buttonClicked:) forControlEvents:UIControlEventTouchUpInside];
-        [self setCallBack:callBack];
+        self.reloadBack = callBack;
     }
     
 
@@ -227,11 +257,22 @@ static const void * onWindowsKey = &onWindowsKey;
 }
 
 - (void)buttonClicked:(UIButton *)sender{
-    if (self.callBack) {
-        self.callBack(sender);
+    if (self.reloadBack) {
+        self.reloadBack(sender);
     }
     [self.loadFailView removeFromSuperview];
-    [self loadDataWithRemind:self.loadingRemind onWindow:self.onWindows.boolValue];
+    if (self.isFull.boolValue) {
+        [self loadDataFullScreenWithRemind:self.loadingRemind cancelBtTitle:self.cancelTitle cancel:self.cancelBack];
+    }else{
+        [self loadDataWithRemind:self.loadingRemind onWindow:self.onWindows.boolValue];
+    }
+  
+}
+
+- (void)cancelClicked:(UIButton *)sender{
+    if (self.cancelBack) {
+        self.cancelBack(sender);
+    }
 }
 
 
@@ -244,6 +285,8 @@ static const void * onWindowsKey = &onWindowsKey;
 - (void)setLoadingView:(UIView *)loadingView{
     return objc_setAssociatedObject(self, loadingViewKey, loadingView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
+
 
 - (UIView *)loadFailView{
      return objc_getAssociatedObject(self, loadFailViewKey);
@@ -261,13 +304,31 @@ static const void * onWindowsKey = &onWindowsKey;
     return objc_setAssociatedObject(self, loadingBackViewKey, loadingBackView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
-- (LoadActionCallBack)callBack{
-    return objc_getAssociatedObject(self, loadActionCallBackKey);
+- (LoadActionCallBack)reloadBack{
+    return objc_getAssociatedObject(self, loadReloadCallBackKey);
 }
 
-- (void)setCallBack:(LoadActionCallBack)callBack{
-    return objc_setAssociatedObject(self, loadActionCallBackKey, callBack, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+- (void)setReloadBack:(LoadActionCallBack)reloadBack{
+    return objc_setAssociatedObject(self, loadReloadCallBackKey, reloadBack, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
+
+- (LoadActionCallBack)cancelBack{
+    return objc_getAssociatedObject(self, loadCancelCallBackKey);
+}
+
+- (void)setCancelBack:(LoadActionCallBack)cancelBack{
+    return objc_setAssociatedObject(self, loadCancelCallBackKey, cancelBack, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+
+- (NSString *)cancelTitle{
+    return objc_getAssociatedObject(self, loadingCancelTitleKey);
+}
+
+- (void)setCancelTitle:(NSString *)cancelTitle{
+    return objc_setAssociatedObject(self, loadingCancelTitleKey, cancelTitle, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
 
 - (NSString *)loadingRemind{
     return objc_getAssociatedObject(self, loadingRemindKey);
@@ -285,6 +346,15 @@ static const void * onWindowsKey = &onWindowsKey;
 
 - (void)setOnWindows:(NSNumber *)onWindows{
     return objc_setAssociatedObject(self, onWindowsKey, onWindows, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSNumber *)isFull{
+    return objc_getAssociatedObject(self, isFullKey);
+}
+
+
+- (void)setIsFull:(NSNumber *)isFull{
+    return objc_setAssociatedObject(self, isFullKey, isFull, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 

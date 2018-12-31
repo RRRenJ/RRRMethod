@@ -14,12 +14,12 @@ typedef void(^LoadActionCallBack)(UIButton *button);
 
 @interface UIViewController (RRRLoadingView)
 
-@property (nonatomic, copy) LoadActionCallBack callBack;
+
 
 
 - (void)loadDataWithRemind:(nullable NSString *)remind onWindow:(BOOL)isOn;
 
-- (void)loadDataFullScreenWithRemind:(nullable NSString *)remind;
+- (void)loadDataFullScreenWithRemind:(nullable NSString *)remind cancelBtTitle:(NSString *)title cancel:(LoadActionCallBack)callBack;
 
 - (void)loadFail:(LoadActionCallBack)callBack andRemind:(nullable NSString *)remind;
 

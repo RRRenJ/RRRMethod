@@ -72,9 +72,22 @@
 - (void)xxx{
     
 //    [self loadDataWithRemind:@"加载中" onWindow:YES];
-////
+//    [self loadFail:^(UIButton * _Nonnull button) {
+//        NSLog(@"11");
+//    } andRemind:nil];
+//
 //    [self performSelector:@selector(loadFail:andRemind:) withObject:nil afterDelay:5];
-    [self loadDataFullScreenWithRemind:nil];
+    
+    [self loadDataFullScreenWithRemind:nil cancelBtTitle:@"fan"  cancel:^(UIButton * _Nonnull button) {
+        
+        NSLog(@"111");
+        
+        [self loadFail:^(UIButton * _Nonnull button) {
+            
+        } andRemind:@"message"];
+    }];
+    
+    
 //    [DATALOAD loadDataWithController:self onWindow:YES];
 //    [MBProgressHUD showSuccess:@"成功而王菲王菲王菲王菲王菲王菲无法"];
 //        self.hud = [MBProgressHUD showLoadingProgressMessage:@"加载中"];
