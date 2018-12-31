@@ -56,7 +56,7 @@ static const void * isFullKey = &isFullKey;
 @implementation UIViewController (RRRLoadingView)
 
 
-- (void)loadDataFullScreenWithRemind:(NSString *)remind  cancelBtTitle:(nonnull NSString *)title cancel:(nonnull LoadActionCallBack)callBack{
+- (void)loadDataFullScreenWithRemind:(nullable NSString *)remind  cancelBtTitle:(nullable NSString *)title cancel:(nonnull LoadActionCallBack)callBack{
     if (!self.loadingBackView) {
         self.loadingBackView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LOAD_WIDTH, LOAD_HEIGHT)];
         self.loadingBackView.backgroundColor = LOAD_RGB(243, 243, 243, 1);

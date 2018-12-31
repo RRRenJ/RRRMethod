@@ -78,7 +78,7 @@
 //
 //    [self performSelector:@selector(loadFail:andRemind:) withObject:nil afterDelay:5];
     
-    [self loadDataFullScreenWithRemind:nil cancelBtTitle:@"fan"  cancel:^(UIButton * _Nonnull button) {
+    [self loadDataFullScreenWithRemind:nil cancelBtTitle:nil  cancel:^(UIButton * _Nonnull button) {
         
         NSLog(@"111");
         
