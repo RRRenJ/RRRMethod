@@ -34,6 +34,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor greenColor];
+    
     // Do any additional setup after loading the view, typically from a nib.
 //    NSLog(@"%@",[UIApplication sharedApplication].keyWindow);
     
@@ -78,14 +79,17 @@
 //
 //    [self performSelector:@selector(loadFail:andRemind:) withObject:nil afterDelay:5];
     
-    [self loadDataFullScreenWithRemind:nil cancelBtTitle:nil  cancel:^(UIButton * _Nonnull button) {
-        
-        NSLog(@"111");
-        
-        [self loadFail:^(UIButton * _Nonnull button) {
-            
-        } andRemind:@"message"];
-    }];
+//    [self loadDataFullScreenWithRemind:nil cancelBtTitle:nil  cancel:^(UIButton * _Nonnull button) {
+//
+//        NSLog(@"111");
+//
+//        [self loadFail:^(UIButton * _Nonnull button) {
+//
+//        } andRemind:@"message"];
+//    }];
+    
+    [self loadDataWithRemind:nil onWindow:NO];
+    
     
     
 //    [DATALOAD loadDataWithController:self onWindow:YES];

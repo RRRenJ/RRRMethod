@@ -160,6 +160,24 @@ static const void * isFullKey = &isFullKey;
             [window addSubview:self.loadingBackView];
         }
     }else{
+        CGFloat y = 0;
+        CGFloat height = LOAD_HEIGHT;
+        if (self.navigationController) {
+            if (self.navigationController.navigationBar.translucent) {
+                y = LOAD_TOP_HEIGHT;
+            }
+            height = height - LOAD_TOP_HEIGHT;
+        }
+        if (self.tabBarController) {
+            height = height - LOAD_BOTTOM_HEIGHT - 49;
+        }
+        
+        if (self.navigationController.tabBarController) {
+            if ((height != LOAD_HEIGHT - LOAD_TOP_HEIGHT - LOAD_BOTTOM_HEIGHT - 49) && (height != LOAD_HEIGHT - LOAD_BOTTOM_HEIGHT - 49)) {
+                height = height - LOAD_BOTTOM_HEIGHT - 49;
+            }
+        }
+        self.loadingBackView.frame = CGRectMake(0, y, LOAD_WIDTH, height);
         if (![self.view.subviews containsObject:self.loadingBackView]) {
             [self.view addSubview:self.loadingBackView];
         }
