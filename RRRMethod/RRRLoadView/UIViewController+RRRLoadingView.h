@@ -19,7 +19,7 @@ typedef void(^LoadActionCallBack)(UIButton *button);
 
 - (void)loadDataWithRemind:(nullable NSString *)remind onWindow:(BOOL)isOn;
 
-- (void)loadDataFullScreenWithRemind:(nullable NSString *)remind cancelBtTitle:(nullable NSString *)title cancel:(LoadActionCallBack)callBack;
+- (void)loadDataFullScreenWithRemind:(nullable NSString *)remind showCancelBt:(BOOL)isShow cancelBtTitle:(nullable NSString *)title cancel:(LoadActionCallBack)callBack;
 
 - (void)loadFail:(LoadActionCallBack)callBack andRemind:(nullable NSString *)remind;
 

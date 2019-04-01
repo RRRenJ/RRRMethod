@@ -42,7 +42,7 @@
             hud.minSize = CGSizeMake(160, 90);
         }
         hud.removeFromSuperViewOnHide = YES;
-        [hud VKCallSelector:@selector(hideAnimated:afterDelay:) error:nil,YES,1.f];
+        [hud VKCallSelector:@selector(hide:afterDelay:) error:nil,YES,1.f];
     }else{
         [hud setValue:text forKey:@"labelText"];
         [hud setValue:[UIFont boldSystemFontOfSize:15] forKey:@"labelFont"];

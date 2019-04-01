@@ -79,16 +79,16 @@
 //
 //    [self performSelector:@selector(loadFail:andRemind:) withObject:nil afterDelay:5];
     
-//    [self loadDataFullScreenWithRemind:nil cancelBtTitle:nil  cancel:^(UIButton * _Nonnull button) {
-//
-//        NSLog(@"111");
-//
-//        [self loadFail:^(UIButton * _Nonnull button) {
-//
-//        } andRemind:@"message"];
-//    }];
+    [self loadDataFullScreenWithRemind:nil showCancelBt:NO cancelBtTitle:nil cancel:^(UIButton * _Nonnull button) {
+        NSLog(@"111");
+        
+        [self loadFail:^(UIButton * _Nonnull button) {
+            
+        } andRemind:@"message"];
+    }];
     
-    [self loadDataWithRemind:nil onWindow:NO];
+    
+//    [self loadDataWithRemind:nil onWindow:NO];
     
     
     

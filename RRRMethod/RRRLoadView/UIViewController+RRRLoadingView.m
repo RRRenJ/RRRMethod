@@ -25,6 +25,7 @@ static const void * loadingCancelTitleKey = &loadingCancelTitleKey;
 static const void * loadingRemindKey = &loadingRemindKey;
 static const void * onWindowsKey = &onWindowsKey;
 static const void * isFullKey = &isFullKey;
+static const void * isShowKey = &isShowKey;
 
 
 @interface UIViewController ()
@@ -46,6 +47,8 @@ static const void * isFullKey = &isFullKey;
 
 @property (nonatomic, strong) NSNumber * isFull;
 
+@property (nonatomic, strong) NSNumber * isShow;
+
 @property (nonatomic, copy) LoadActionCallBack cancelBack;
 
 @property (nonatomic, copy) LoadActionCallBack reloadBack;
@@ -56,7 +59,7 @@ static const void * isFullKey = &isFullKey;
 @implementation UIViewController (RRRLoadingView)
 
 
-- (void)loadDataFullScreenWithRemind:(nullable NSString *)remind  cancelBtTitle:(nullable NSString *)title cancel:(nonnull LoadActionCallBack)callBack{
+- (void)loadDataFullScreenWithRemind:(nullable NSString *)remind  showCancelBt:(BOOL)isShow cancelBtTitle:(nullable NSString *)title cancel:(nonnull LoadActionCallBack)callBack{
     if (!self.loadingBackView) {
         self.loadingBackView = [[UIView alloc]initWithFrame:CGRectMake(0, 0, LOAD_WIDTH, LOAD_HEIGHT)];
         self.loadingBackView.backgroundColor = LOAD_RGB(243, 243, 243, 1);
@@ -64,6 +67,7 @@ static const void * isFullKey = &isFullKey;
 
     self.onWindows = [NSNumber numberWithBool:YES];
     self.isFull = [NSNumber numberWithBool:YES];
+    self.isShow = [NSNumber numberWithBool:isShow];
     UIWindow * window = [UIApplication sharedApplication].keyWindow;
     if (![window.subviews containsObject:self.loadingBackView]) {
         
@@ -106,20 +110,21 @@ static const void * isFullKey = &isFullKey;
         label.numberOfLines = 2;
         label.textAlignment = NSTextAlignmentCenter;
 
-        
-        UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
-        self.cancelTitle = title ?  title : @"返回";
-        [button setTitle:self.cancelTitle forState:UIControlStateNormal];
-        [button setTitleColor:LOAD_RGB(153, 153, 153, 1) forState:UIControlStateNormal];
-        [self.loadingView addSubview:button];
-        button.frame = CGRectMake(LOAD_WIDTH/2 - 60, CGRectGetMaxY(label.frame) + 20, 120, 36);
-        button.titleLabel.font = [UIFont systemFontOfSize:15];
-        button.layer.cornerRadius = 18;
-        button.layer.masksToBounds = YES;
-        button.layer.borderColor = LOAD_RGB(153, 153, 153, 1).CGColor;
-        button.layer.borderWidth = 1;
-        [button addTarget:self action:@selector(cancelClicked:) forControlEvents:UIControlEventTouchUpInside];
-        self.cancelBack = callBack;
+        if (isShow) {
+            UIButton * button = [UIButton buttonWithType:UIButtonTypeCustom];
+            self.cancelTitle = title ?  title : @"返回";
+            [button setTitle:self.cancelTitle forState:UIControlStateNormal];
+            [button setTitleColor:LOAD_RGB(153, 153, 153, 1) forState:UIControlStateNormal];
+            [self.loadingView addSubview:button];
+            button.frame = CGRectMake(LOAD_WIDTH/2 - 60, CGRectGetMaxY(label.frame) + 20, 120, 36);
+            button.titleLabel.font = [UIFont systemFontOfSize:15];
+            button.layer.cornerRadius = 18;
+            button.layer.masksToBounds = YES;
+            button.layer.borderColor = LOAD_RGB(153, 153, 153, 1).CGColor;
+            button.layer.borderWidth = 1;
+            [button addTarget:self action:@selector(cancelClicked:) forControlEvents:UIControlEventTouchUpInside];
+            self.cancelBack = callBack;
+        }
     }
     
     if (![self.loadingBackView.subviews containsObject:self.loadingView]) {
@@ -280,7 +285,7 @@ static const void * isFullKey = &isFullKey;
     }
     [self.loadFailView removeFromSuperview];
     if (self.isFull.boolValue) {
-        [self loadDataFullScreenWithRemind:self.loadingRemind cancelBtTitle:self.cancelTitle cancel:self.cancelBack];
+        [self loadDataFullScreenWithRemind:self.loadingRemind showCancelBt:self.isShow.boolValue cancelBtTitle:self.cancelTitle cancel:self.cancelBack];
     }else{
         [self loadDataWithRemind:self.loadingRemind onWindow:self.onWindows.boolValue];
     }
@@ -373,6 +378,15 @@ static const void * isFullKey = &isFullKey;
 
 - (void)setIsFull:(NSNumber *)isFull{
     return objc_setAssociatedObject(self, isFullKey, isFull, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (NSNumber *)isShow{
+    return objc_getAssociatedObject(self, isShowKey);
+}
+
+
+- (void)setIsShow:(NSNumber *)isShow{
+    return objc_setAssociatedObject(self, isShowKey, isShow, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 
