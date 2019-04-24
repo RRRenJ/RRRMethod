@@ -72,6 +72,15 @@
 
 - (void)xxx{
     
+    self.hud = [MBProgressHUD showLoadingProgressMessage:@"rrr"];
+    [self sending];
+  
+//    for (int i = 0; i < 10 ; i ++) {
+//        usleep(1000000);
+//        hud.progress += 0.1;
+//    }
+//    [hud hideHUD];
+    
 //    [self loadDataWithRemind:@"加载中" onWindow:YES];
 //    [self loadFail:^(UIButton * _Nonnull button) {
 //        NSLog(@"11");
@@ -79,14 +88,14 @@
 //
 //    [self performSelector:@selector(loadFail:andRemind:) withObject:nil afterDelay:5];
     
-    [self loadDataFullScreenWithRemind:nil showCancelBt:NO cancelBtTitle:nil cancel:^(UIButton * _Nonnull button) {
-        NSLog(@"111");
-        
-        [self loadFail:^(UIButton * _Nonnull button) {
-            
-        } andRemind:@"message"];
-    }];
-    
+//    [self loadDataFullScreenWithRemind:nil showCancelBt:NO cancelBtTitle:nil cancel:^(UIButton * _Nonnull button) {
+//        NSLog(@"111");
+//
+//        [self loadFail:^(UIButton * _Nonnull button) {
+//
+//        } andRemind:@"message"];
+//    }];
+//
     
 //    [self loadDataWithRemind:nil onWindow:NO];
     
