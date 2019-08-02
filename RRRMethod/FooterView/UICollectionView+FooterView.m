@@ -89,7 +89,7 @@ static const void * footerViewKey = &footerViewKey;
     return objc_getAssociatedObject(self, footerViewKey);
 }
 
-- (void)setLoadingView:(UIView *)footerView{
+- (void)setFooterView:(UIView *)footerView{
     return objc_setAssociatedObject(self, footerViewKey, footerView, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
