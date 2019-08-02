@@ -32,6 +32,7 @@
 		B78470C521800A9F00EEF036 /* VKMsgSend.m in Sources */ = {isa = PBXBuildFile; fileRef = B78470C321800A9F00EEF036 /* VKMsgSend.m */; };
 		B79D608421C2555400C0C538 /* DataLoadView.m in Sources */ = {isa = PBXBuildFile; fileRef = B79D608321C2555400C0C538 /* DataLoadView.m */; };
 		B7D734C821992E6D0094AC93 /* QRCreateMethod.m in Sources */ = {isa = PBXBuildFile; fileRef = B7D734C621992E6D0094AC93 /* QRCreateMethod.m */; };
+		B7FC6FED22F3E87F00AB7700 /* UICollectionView+FooterView.m in Sources */ = {isa = PBXBuildFile; fileRef = B7FC6FEC22F3E87F00AB7700 /* UICollectionView+FooterView.m */; };
 		EF9C50CD39101363B3A6F843 /* libPods-RRRMethodDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5585BD9E87922DB0805E6FA5 /* libPods-RRRMethodDemo.a */; };
 /* End PBXBuildFile section */
 
@@ -87,6 +88,8 @@
 		B79D608321C2555400C0C538 /* DataLoadView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DataLoadView.m; sourceTree = "<group>"; };
 		B7D734C621992E6D0094AC93 /* QRCreateMethod.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QRCreateMethod.m; sourceTree = "<group>"; };
 		B7D734C721992E6D0094AC93 /* QRCreateMethod.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QRCreateMethod.h; sourceTree = "<group>"; };
+		B7FC6FEB22F3E87F00AB7700 /* UICollectionView+FooterView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+FooterView.h"; sourceTree = "<group>"; };
+		B7FC6FEC22F3E87F00AB7700 /* UICollectionView+FooterView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+FooterView.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +192,8 @@
 				B75749F820D1483700757A90 /* NetworkingLoadingView.m */,
 				B75749FC20D152B500757A90 /* UITableView+FooterView.h */,
 				B75749FD20D152B500757A90 /* UITableView+FooterView.m */,
+				B7FC6FEB22F3E87F00AB7700 /* UICollectionView+FooterView.h */,
+				B7FC6FEC22F3E87F00AB7700 /* UICollectionView+FooterView.m */,
 			);
 			path = FooterView;
 			sourceTree = "<group>";
@@ -384,6 +389,7 @@
 				B75749F920D1483700757A90 /* NetworkingLoadingView.m in Sources */,
 				B75749EE20CF9C3400757A90 /* EqualSpaceFlowLayout.m in Sources */,
 				B78470C521800A9F00EEF036 /* VKMsgSend.m in Sources */,
+				B7FC6FED22F3E87F00AB7700 /* UICollectionView+FooterView.m in Sources */,
 				B75749F220CFA03700757A90 /* AVCompress.m in Sources */,
 				B715A42A20CE9CB9003018EF /* AppDelegate.m in Sources */,
 				B715A44920CE9D85003018EF /* RRRButton.m in Sources */,

@@ -14,9 +14,6 @@ typedef void(^LoadActionCallBack)(UIButton *button);
 
 @interface UIViewController (RRRLoadingView)
 
-
-
-
 - (void)loadDataWithRemind:(nullable NSString *)remind onWindow:(BOOL)isOn;
 
 - (void)loadDataFullScreenWithRemind:(nullable NSString *)remind showCancelBt:(BOOL)isShow cancelBtTitle:(nullable NSString *)title cancel:(LoadActionCallBack)callBack;

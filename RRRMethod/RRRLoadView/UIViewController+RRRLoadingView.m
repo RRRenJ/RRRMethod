@@ -117,7 +117,7 @@ static const void * isShowKey = &isShowKey;
             [button setTitleColor:LOAD_RGB(153, 153, 153, 1) forState:UIControlStateNormal];
             [self.loadingView addSubview:button];
             button.frame = CGRectMake(LOAD_WIDTH/2 - 60, CGRectGetMaxY(label.frame) + 20, 120, 36);
-            button.titleLabel.font = [UIFont systemFontOfSize:15];
+            button.titleLabel.font = [UIFont systemFontOfSize:14];
             button.layer.cornerRadius = 18;
             button.layer.masksToBounds = YES;
             button.layer.borderColor = LOAD_RGB(153, 153, 153, 1).CGColor;

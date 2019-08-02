@@ -44,9 +44,7 @@
 //    RRRCountDownMethod * count = [[RRRCountDownMethod alloc] initWithBt:bt startTitle:@"开始" waitTitle:@"进行" endTitle:@"重来" totalTime:9];
 //
     
-    
-    
-    
+ 
 //    RRRButton * bt1 = [RRRButton createBtWithFrame:CGRectMake(100, 300, 200, 100) type:UIButtonTypeCustom title:nil titleColor:nil btColor:[UIColor blueColor] andTarget:self action:@selector(xxxx) forControlEvents:UIControlEventTouchUpInside];
 //    [self.view addSubview:bt1];
 //
