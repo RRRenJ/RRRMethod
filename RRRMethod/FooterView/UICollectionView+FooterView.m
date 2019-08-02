@@ -32,8 +32,9 @@ static const void * footerViewKey = &footerViewKey;
     UIView * errorView ;
     if (self.footerView) {
         errorView = self.footerView;
+        self.footerView.frame = CGRectMake(0, y, SCR_WIDTH, SCR_HEIGHT/3);
     }else{
-        errorView =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCR_WIDTH, SCR_HEIGHT/3)];
+        errorView =  [[UIView alloc]initWithFrame:CGRectMake(0, y, SCR_WIDTH, SCR_HEIGHT/3)];
         self.footerView = errorView;
     }
     UIImageView * errorImageView = [[UIImageView alloc]init];
@@ -47,8 +48,9 @@ static const void * footerViewKey = &footerViewKey;
     UIView * errorView ;
     if (self.footerView) {
         errorView = self.footerView;
+        self.footerView.frame = CGRectMake(0, y, SCR_WIDTH, SCR_HEIGHT/3);
     }else{
-        errorView =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCR_WIDTH, SCR_HEIGHT/3)];
+        errorView =  [[UIView alloc]initWithFrame:CGRectMake(0, y, SCR_WIDTH, SCR_HEIGHT/3)];
         self.footerView = errorView;
     }
     RRRLabel * remindLabel = [RRRLabel createLbWithText:string textColor:GRAY_TEXT_COLOR textFont:14 textAlignment:NSTextAlignmentCenter];
@@ -61,8 +63,9 @@ static const void * footerViewKey = &footerViewKey;
     UIView * errorView ;
     if (self.footerView) {
         errorView = self.footerView;
+        self.footerView.frame = CGRectMake(0, y, SCR_WIDTH, SCR_HEIGHT/3);
     }else{
-        errorView =  [[UIView alloc]initWithFrame:CGRectMake(0, 0, SCR_WIDTH, SCR_HEIGHT/3)];
+        errorView =  [[UIView alloc]initWithFrame:CGRectMake(0, y, SCR_WIDTH, SCR_HEIGHT/3)];
         self.footerView = errorView;
     }
     UIImageView * errorImageView = [[UIImageView alloc]init];
